@@ -16,12 +16,12 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
         <meta name="description" content="Projecto-docente360 es una plataforma integral para la gestión educativa que permite la observación, evaluación y seguimiento de docentes, control de asistencia, encuestas de satisfacción, y generación de reportes detallados para una administración eficiente y completa del desempeño académico." />
         <meta content="Developers UMA" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="/assets/images/logo-uma.ico">
+        <link rel="shortcut icon" href="/assets/images/logo-icono.png">
 
         <!-- plugin css -->
         <link href="/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -78,8 +78,14 @@
                                     <p class="mb-0 font-size-11 text-muted">martin.gurley@email.com</p>
                                 </div>
                                 <a class="dropdown-item" href="contacts-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-2"></i> <span class="align-middle">Perfil</span></a>
-                                <a class="dropdown-item" href="auth-logout.html"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span class="align-middle">Cerrar sesión</span></a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" class="dropdown-item ai-icon"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span class="align-middle">Cerrar sesión</span></a>
                             </div>
+                            
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none">
+                                        @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -91,7 +97,7 @@
                 <div class="navbar-brand-box">
                     <a href="#" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="/assets/images/logo-uma.ico" alt="" height="26">
+                            <img src="/assets/images/logo-icono.png" alt="" height="26">
                         </span>
                         <span class="logo-lg">
                             <img src="/assets/images/logo-uma.png" alt="" height="75">

@@ -59,7 +59,15 @@
                                                 </button>
                                             </div>
                                         </div>
-                
+
+                                        @error('email')
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <i class="mdi mdi-block-helper me-2"></i>
+                                            {{ $message }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                        @enderror
+
                                         <div class="form-check py-1">
                                             <input type="checkbox" class="form-check-input" id="auth-remember-check">
                                             <label class="form-check-label" for="auth-remember-check">Recuérdame</label>
