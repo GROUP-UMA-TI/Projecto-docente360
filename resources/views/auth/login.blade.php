@@ -1,74 +1,104 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-                <h2>Login </h2>
+<head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        <meta charset="utf-8" />
+        <title>Login | Projecto-docente360</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Projecto-docente360 es una plataforma integral para la gestión educativa que permite la observación, evaluación y seguimiento de docentes, control de asistencia, encuestas de satisfacción, y generación de reportes detallados para una administración eficiente y completa del desempeño académico." />
+        <meta content="Developers UMA" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+        <!-- Bootstrap Css -->
+        <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    </head>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    
+    <body>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+    <div class="authentication-bg min-vh-100">
+        <div class="bg-overlay bg-light"></div>
+        <div class="container">
+            <div class="d-flex flex-column min-vh-100 px-3 pt-4">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                        <div class="card">
+                            <div class="card-body p-4"> 
+                                <div class="text-center mt-2">
+                                    <img src="/assets/images/logo-uma.png" alt="" width="180">
                                 </div>
+                                <div class="p-2 mt-4">
+                                    <form action="{{route('login')}}" method="post">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label class="form-label" for="email">Correo</label>
+                                            <div class="position-relative input-custom-icon">
+                                                <input type="text" class="form-control" name="email" placeholder="Ingrese su correo" required>
+                                                 <span class="bx bx-user"></span>
+                                            </div>
+                                        </div>
+                
+                                        <div class="mb-3">
+                                            {{-- <div class="float-end">
+                                                <a href="auth-recoverpw.html" class="text-muted text-decoration-underline">¿Olvidaste tu contraseña?</a>
+                                            </div> --}}
+                                            <label class="form-label" for="password">Contraseña</label>
+                                            <div class="position-relative auth-pass-inputgroup input-custom-icon">
+                                                <span class="bx bx-lock-alt"></span>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                                                <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
+                                                    <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                
+                                        <div class="form-check py-1">
+                                            <input type="checkbox" class="form-check-input" id="auth-remember-check">
+                                            <label class="form-check-label" for="auth-remember-check">Recuérdame</label>
+                                        </div>
+                                        
+                                        <div class="mt-3">
+                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Iniciar sesión</button>
+                                        </div>
+                                    </form>
+                                </div>
+            
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                    </div><!-- end col -->
+                </div><!-- end row -->
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center p-4">
+                            <p>© <script>document.write(new Date().getFullYear())</script> webadmin. Creado con <i class="mdi mdi-heart text-danger"></i> por Developres</p>
                         </div>
-                    </form>
+                    </div>
                 </div>
+
             </div>
-        </div>
+        </div><!-- end container -->
     </div>
-</div>
-@endsection
+
+
+
+        <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/libs/metismenujs/metismenujs.min.js"></script>
+        <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/assets/libs/eva-icons/eva.min.js"></script>
+
+        <script src="/assets/js/pages/pass-addon.init.js"></script>
+
+    </body>
+
+
+</html>
