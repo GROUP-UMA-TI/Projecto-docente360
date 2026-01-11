@@ -128,12 +128,13 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
-                                    <i class="bx bx-envelope icon nav-icon"></i>
-                                    <span class="menu-item" data-key="t-email">Email</span>
+                                    <i class="bx bx-chalkboard"></i>
+                                    <span class="menu-item" data-key="t-email">Gestión Docente</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="email-inbox.html" data-key="t-inbox">Inbox</a></li>
-                                    <li><a href="email-read.html" data-key="t-read-email">Read Email</a></li>
+                                    <li><a href="#" data-key="t-evaluaciones">Evaluaciones</a></li>
+                                    <li><a href="#" data-key="t-historial-evaluaciones">Historial de Evaluaciones</a></li>
+                                    <li><a href="#" data-key="t-encuestas">Encuestas</a></li>
                                 </ul>
                             </li>
 
@@ -157,11 +158,11 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
                                     <i class="bx bx-receipt icon nav-icon"></i>
-                                    <span class="menu-item" data-key="t-invoices">Invoices</span>
+                                    <span class="menu-item" data-key="t-invoices">Gestión Director</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="invoices-list.html" data-key="t-invoice-list">Invoice List</a></li>
-                                    <li><a href="invoices-detail.html" data-key="t-invoice-detail">Invoice Detail</a></li>
+                                    <li><a href="#" data-key="t-evaluaciones">Evaluaciones</a></li>
+                                    <li><a href="#" data-key="t-historial-evaluaciones">Historial de Evaluaciones</a></li>
                                 </ul>
                             </li>
 

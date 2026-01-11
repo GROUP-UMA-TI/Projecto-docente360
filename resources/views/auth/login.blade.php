@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center p-4">
-                            <p>© <script>document.write(new Date().getFullYear())</script> webadmin. Creado con <i class="mdi mdi-heart text-danger"></i> por Developres</p>
+                            <p>© <script>document.write(new Date().getFullYear())</script> Plataforma. Creado con <i class="mdi mdi-heart text-danger"></i> por Developres - UMA</p>
                         </div>
                     </div>
                 </div>
