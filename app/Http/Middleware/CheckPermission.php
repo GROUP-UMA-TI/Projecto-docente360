@@ -56,6 +56,9 @@ class CheckPermission
             return response()->view('errors.403', []);
         }
     }
+
+
+
     private function initializePermissions($user)
     {
         $permissions = $user->permissions()

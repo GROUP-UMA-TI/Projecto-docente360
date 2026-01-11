@@ -45,7 +45,8 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        $this->loadPermissions($user);
+        // Cargar permisos y guardarlos en sesión
+        $this->loadPermissions();
         $this->initializePermissions(Auth::user());
     }
 
@@ -54,6 +55,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             $userId = Auth::id();
 
+            // Verificar en caché antes de hacer una consulta a la base de datos
             $permissions = Cache::remember('permissions_' . $userId, 60, function () use ($userId) {
                 return DB::table('permissions')
                     ->join('items', 'permissions.item_id', '=', 'items.id')
@@ -90,12 +92,10 @@ class LoginController extends Controller
             }
 
             session(['permissions' => $permissionsArray]);
-
         }
-        
     }
 
-    protected function initializePermissions($user)
+    private function initializePermissions($user)
     {
         $permissions = $user->permissions()
             ->where('estado', 'A')
@@ -108,13 +108,9 @@ class LoginController extends Controller
             'm-permission' => $permissions,
             'permission-expiration' => now()->timestamp,
         ]);
-        
     }
 
     
-
-
-
 
 
 }
