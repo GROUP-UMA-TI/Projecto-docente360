@@ -23,9 +23,6 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/logo-icono.png">
 
-        <!-- plugin css -->
-        <link href="/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
-
         <!-- Bootstrap Css -->
         <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -132,7 +129,7 @@
                                     <span class="menu-item" data-key="t-email">Gestión Docente</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="#" data-key="t-evaluaciones">Evaluaciones</a></li>
+                                    <li><a href="{{ route('docente.evaluacion') }}" data-key="t-evaluaciones">Evaluaciones</a></li>
                                     <li><a href="#" data-key="t-historial-evaluaciones">Historial de Evaluaciones</a></li>
                                     <li><a href="#" data-key="t-encuestas">Encuestas</a></li>
                                 </ul>
@@ -407,15 +404,6 @@
         <script src="/assets/libs/metismenujs/metismenujs.min.js"></script>
         <script src="/assets/libs/simplebar/simplebar.min.js"></script>
         <script src="/assets/libs/eva-icons/eva.min.js"></script>
-
-        <!-- apexcharts -->
-        <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
-
-        <!-- Vector map-->
-        <script src="/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="/assets/libs/jsvectormap/maps/world-merc.js"></script>
-        
-        <script src="/assets/js/pages/dashboard.init.js"></script>
 
         <script src="/assets/js/app.js"></script>
 

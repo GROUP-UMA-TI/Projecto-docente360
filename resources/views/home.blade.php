@@ -2,6 +2,9 @@
 
 @section('content')
 
+<!-- plugin css -->
+<link href="/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card">
@@ -981,5 +984,14 @@
 @endsection
 
 @section('script')
+
+        <!-- apexcharts -->
+        <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+        <!-- Vector map-->
+        <script src="/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="/assets/libs/jsvectormap/maps/world-merc.js"></script>
+        
+        <script src="/assets/js/pages/dashboard.init.js"></script>
 
 @endsection
