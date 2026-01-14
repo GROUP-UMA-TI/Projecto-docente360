@@ -29,6 +29,8 @@
         <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Mobile Menu Fix Css -->
+        <link href="/assets/css/mobile-menu-fix.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -92,7 +94,7 @@
 
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="#" class="logo logo-dark">
+                    <a href="{{ route('home') }}" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="/assets/images/logo-icono.png" alt="" height="26">
                         </span>
@@ -115,7 +117,7 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
 
                             <li>
-                                <a href="/">
+                                <a href="{{ route('home') }}">
                                     <i class="bx bx-home-alt icon nav-icon"></i>
                                     <span class="menu-item" data-key="t-inicio">Inicio</span>
                                 </a>
@@ -406,7 +408,11 @@
         <script src="/assets/libs/eva-icons/eva.min.js"></script>
 
         <script src="/assets/js/app.js"></script>
-
+        
+        <!-- Mobile Menu Fix -->
+        <script src="/assets/js/mobile-menu-fix.js"></script>
+        
+  
         @yield('script')
 
     </body>
