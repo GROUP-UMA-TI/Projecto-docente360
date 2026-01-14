@@ -115,7 +115,7 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
 
                             <li>
-                                <a href="#">
+                                <a href="/">
                                     <i class="bx bx-home-alt icon nav-icon"></i>
                                     <span class="menu-item" data-key="t-inicio">Inicio</span>
                                 </a>
