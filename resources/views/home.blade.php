@@ -2,984 +2,1035 @@
 
 @section('content')
 
-<!-- plugin css -->
-<link href="/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex align-items-start">
-                                            <div class="flex-grow-1">
-                                                <h5 class="card-title mb-4">Overview</h5>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <div class="dropdown">
-                                                    <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <span class="fw-semibold">Sort By:</span>
-                                                        <span class="text-muted">Yearly<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Yearly</a>
-                                                        <a class="dropdown-item" href="#">Monthly</a>
-                                                        <a class="dropdown-item" href="#">Weekly</a>
-                                                        <a class="dropdown-item" href="#">Today</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="page-title-head d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h4 class="fs-xl fw-bold m-0">Dashboard</h4>
+                    </div>
 
-                                        <div>
-                                            <div id="overview" data-colors='["#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9","#e6ecf9","#e6ecf9","#1f58c7","#1f58c7", "#1f58c7"]' class="apex-chart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar">
-                                                            <div class="avatar-title rounded bg-primary-subtle ">
-                                                                <i class="bx bx-check-shield font-size-24 mb-0 text-primary"></i>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h6 class="mb-0 font-size-15">Total Sales</h6>
-                                                        </div>
-
-                                                        <div class="flex-shrink-0">
-                                                            <div class="dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <i class="bx bx-dots-horizontal text-muted font-size-22"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Yearly</a>
-                                                                    <a class="dropdown-item" href="#">Monthly</a>
-                                                                    <a class="dropdown-item" href="#">Weekly</a>
-                                                                    <a class="dropdown-item" href="#">Today</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div>
-                                                        <h4 class="mt-4 pt-1 mb-0 font-size-22">$34,123.20 <span class="text-success fw-medium font-size-13 align-middle"> <i class="mdi mdi-arrow-up"></i> 8.34% </span> </h4>
-                                                        <div class="d-flex mt-1 align-items-end overflow-hidden">
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-0 text-truncate">Total Sales World Wide</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <div id="mini-1" data-colors='["#1f58c7"]' class="apex-charts"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar">
-                                                            <div class="avatar-title rounded bg-primary-subtle ">
-                                                                <i class="bx bx-cart-alt font-size-24 mb-0 text-primary"></i>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h6 class="mb-0 font-size-15">Total Orders</h6>
-                                                        </div>
-
-                                                        <div class="flex-shrink-0">
-                                                            <div class="dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <i class="bx bx-dots-horizontal text-muted font-size-22"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Yearly</a>
-                                                                    <a class="dropdown-item" href="#">Monthly</a>
-                                                                    <a class="dropdown-item" href="#">Weekly</a>
-                                                                    <a class="dropdown-item" href="#">Today</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div>
-                                                        <h4 class="mt-4 pt-1 mb-0 font-size-22">63,234.20 <span class="text-danger fw-medium font-size-13 align-middle"> <i class="mdi mdi-arrow-down"></i> 3.68% </span> </h4>
-                                                        <div class="d-flex mt-1 align-items-end overflow-hidden">
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-0 text-truncate">Total Orders World Wide</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <div id="mini-2" data-colors='["#1f58c7"]' class="apex-charts"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar">
-                                                            <div class="avatar-title rounded bg-primary-subtle ">
-                                                                <i class="bx bx-package font-size-24 mb-0 text-primary"></i>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h6 class="mb-0 font-size-15">Today Visitor</h6>
-                                                        </div>
-
-                                                        <div class="flex-shrink-0">
-                                                            <div class="dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <i class="bx bx-dots-horizontal text-muted font-size-22"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Yearly</a>
-                                                                    <a class="dropdown-item" href="#">Monthly</a>
-                                                                    <a class="dropdown-item" href="#">Weekly</a>
-                                                                    <a class="dropdown-item" href="#">Today</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div>
-                                                        <h4 class="mt-4 pt-1 mb-0 font-size-22">425,34.45 <span class="text-danger fw-medium font-size-13 align-middle"> <i class="mdi mdi-arrow-down"></i> 2.64% </span> </h4>
-                                                        <div class="d-flex mt-1 align-items-end overflow-hidden">
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-0 text-truncate">Total Visitor World Wide</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <div id="mini-3" data-colors='["#1f58c7"]' class="apex-charts"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-xl-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar">
-                                                            <div class="avatar-title rounded bg-primary-subtle ">
-                                                                <i class="bx bx-rocket font-size-24 mb-0 text-primary"></i>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h6 class="mb-0 font-size-15">Total Expense</h6>
-                                                        </div>
-
-                                                        <div class="flex-shrink-0">
-                                                            <div class="dropdown">
-                                                                <a class="dropdown-toggle" href="#"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <i class="bx bx-dots-horizontal text-muted font-size-22"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Yearly</a>
-                                                                    <a class="dropdown-item" href="#">Monthly</a>
-                                                                    <a class="dropdown-item" href="#">Weekly</a>
-                                                                    <a class="dropdown-item" href="#">Today</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div>
-                                                        <h4 class="mt-4 pt-1 mb-0 font-size-22">6,482.46 <span class="text-success fw-medium font-size-13 align-middle"> <i class="mdi mdi-arrow-down"></i> 5.79% </span> </h4>
-                                                        <div class="d-flex mt-1 align-items-end overflow-hidden">
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-0 text-truncate">Total Expense World Wide</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <div id="mini-4" data-colors='["#1f58c7"]' class="apex-charts"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-xxl-8">
-                                <div class="row">
-                                    <div class="col-xl-7">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-start mb-2">
-                                                    <div class="flex-grow-1">
-                                                        <h5 class="card-title">Popular Products</h5>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="dropdown">
-                                                            <a class="dropdown-toggle text-muted" href="#"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
-                                                                Today<i class="mdi mdi-chevron-down ms-1"></i>
-                                                            </a>
-
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Yearly</a>
-                                                                <a class="dropdown-item" href="#">Monthly</a>
-                                                                <a class="dropdown-item" href="#">Weekly</a>
-                                                                <a class="dropdown-item" href="#">Today</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-5">
-                                                    <div class="popular-product-img p-2">
-                                                        <img src="/assets/images/product/img.png" alt="">
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <span class="badge bg-primary-subtle text-primary  font-size-10 text-uppercase ls-05"> Popular Item</span>
-                                                        <h5 class="mt-2 font-size-16"><a href="#" class="text-body">Home & Office Chair Blue</a></h5>
-                                                        <p class="text-muted">But who has any right to find chooses enjoy.</p>
-
-                                                        <div class="row g-0 mt-3 pt-1 align-items-end">
-                                                            <div class="col-4">
-                                                                <div class="mt-1">
-                                                                    <h4 class="font-size-16">800</h4>
-                                                                    <p class="text-muted mb-1">Total Selling</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <div class="mt-1">
-                                                                    <h4 class="font-size-16">250</h4>
-                                                                    <p class="text-muted mb-1">Total Stock</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <div class="mt-1">
-                                                                    <a href="#" class="btn btn-primary btn-sm mb-1">Buy
-                                                                        Now</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mx-n4" data-simplebar style="max-height: 205px;">
-                                                    <div class="popular-product-box rounded my-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <div class="avatar-md">
-                                                                    <div class="product-img avatar-title img-thumbnail bg-primary-subtle  border-0">
-                                                                        <img src="assets/images/product/img-1.png" class="img-fluid" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="mb-1 text-truncate"><a href="#" class="font-size-15 text-body">Wood Chair dark Brown</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0 text-truncate">$230.00</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end ms-3">
-                                                                <h5 class="mb-1"><a href="#" class="font-size-15 text-body">$62300.00</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0">562 Sales</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popular-product-box rounded my-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <div class="avatar-md">
-                                                                        <div class="product-img avatar-title img-thumbnail bg-success-subtle  border-0">
-                                                                            <img src="assets/images/product/img-8.png" class="img-fluid" alt="">
-                                                                        </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="mb-1 text-truncate"><a href="#" class="font-size-15 text-body">Home & Office Chair Crime</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0 text-truncate">$190.00</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end ms-3">
-                                                                <h5 class="mb-1"><a href="#" class="font-size-15 text-body">$25698.00</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0">856 Sales</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popular-product-box rounded my-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <div class="avatar-md">
-                                                                    <div class="product-img avatar-title img-thumbnail bg-danger-subtle  border-0">
-                                                                        <img src="assets/images/product/img-3.png" class="img-fluid" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="mb-1 text-truncate"><a href="#" class="font-size-15 text-body">Office Chair Blue</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0 text-truncate">$420.00</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end ms-3">
-                                                                <h5 class="mb-1"><a href="#" class="font-size-15 text-body">$64351.00</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0">524 Sales</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popular-product-box rounded my-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <div class="avatar-md">
-                                                                    <div class="product-img avatar-title img-thumbnail bg-success-subtle  border-0">
-                                                                        <img src="assets/images/product/img-4.png" class="img-fluid" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="mb-1 text-truncate"><a href="#" class="font-size-15 text-body">Home & Office Chair Green</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0 text-truncate">$230.00</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end ms-3">
-                                                                <h5 class="mb-1"><a href="#" class="font-size-15 text-body">$96485.00</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0">634 Sales</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="popular-product-box rounded my-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <div class="avatar-md">
-                                                                    <div class="product-img avatar-title img-thumbnail bg-danger-subtle  border-0" >
-                                                                        <img src="assets/images/product/img-5.png" class="img-fluid" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="mb-1 text-truncate"><a href="#" class="font-size-15 text-body">Wood Chair dark Brown</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0 text-truncate">$230.00</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end ms-3">
-                                                                <h5 class="mb-1"><a href="#" class="font-size-15 text-body">$56230.00</a></h5>
-                                                                <p class="text-muted fw-semibold mb-0">964 Sales</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-5">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-start mb-2">
-                                                    <div class="flex-grow-1">
-                                                        <h5 class="card-title">Loyal Customers</h5>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="dropdown">
-                                                            <a class="dropdown-toggle text-muted" href="#"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
-                                                                <i class="bx bx-dots-horizontal font-size-22"></i>
-                                                            </a>
-
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Yearly</a>
-                                                                <a class="dropdown-item" href="#">Monthly</a>
-                                                                <a class="dropdown-item" href="#">Weekly</a>
-                                                                <a class="dropdown-item" href="#">Today</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mx-n4" data-simplebar style="max-height: 421px;">
-                                                    <div class="border-bottom loyal-customers-box pt-2">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">Michelle Bernard</h5>
-                                                                <p class="text-muted text-truncate mb-0">Michelle@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    4.7 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                    <div class="border-bottom loyal-customers-box">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">David Grajeda</h5>
-                                                                <p class="text-muted text-truncate mb-0">David@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    3.4 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                    <div class="border-bottom loyal-customers-box">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">Charles Roman</h5>
-                                                                <p class="text-muted text-truncate mb-0">Charles@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    4.9 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                    <div class="border-bottom loyal-customers-box">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-7.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">David Reynolds</h5>
-                                                                <p class="text-muted text-truncate mb-0">David@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    3.5 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                    <div class="border-bottom loyal-customers-box">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">Marion Munroe</h5>
-                                                                <p class="text-muted text-truncate mb-0">Marion@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    2.3 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                    <div class="py-3 loyal-customers-box">
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar img-thumbnail" alt="">
-                                                            <div class="flex-grow-1 ms-3 overflow-hidden">
-                                                                <h5 class="font-size-15 mb-1 text-truncate">Christina Emerson</h5>
-                                                                <p class="text-muted text-truncate mb-0">Christina@gmail.com</p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 text-end">
-                                                                <h5 class="font-size-14 mb-0 text-truncate w-xs bg-light p-2 rounded text-center">
-                                                                    4.1 <i class="bx bxs-star font-size-14 text-primary ms-1"></i></h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="text-end">
+                        <ol class="breadcrumb m-0 py-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
                             
-                            <div class="col-xxl-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-start">
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <h5 class="card-title mb-4 text-truncate">Top Selling Categories</h5>
-                                            </div>
-                                            <div class="flex-shrink-0 ms-2">
-                                                <div class="dropdown">
-                                                    <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <span class="fw-semibold">Sort By:</span> <span
-                                                            class="text-muted">Weekly<i
-                                                                class="mdi mdi-chevron-down ms-1"></i></span>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Yearly</a>
-                                                        <a class="dropdown-item" href="#">Monthly</a>
-                                                        <a class="dropdown-item" href="#">Weekly</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+                
 
-                                        <div id="saleing-categories" data-colors='["#1f58c7", "#4976cf","#6a92e1", "#e6ecf9"]' class="apex-charts" dir="ltr"></div> 
-
-                                        <div class="row mt-3 pt-1">
-                                            <div class="col-md-6">
-                                                <div class="px-2 mt-2">
-                                                    <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                        <i class="mdi mdi-circle font-size-10 text-primary"></i>
-                                                        <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                            <p class="font-size-15 mb-1 text-truncate">Men Fashion</p>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="fw-bold">34.3%</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="d-flex align-items-center mt-2">
-                                                        <i class="mdi mdi-circle font-size-10 text-success"></i>
-                                                        <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                            <p class="font-size-15 mb-0 text-truncate">Women Clothing</p>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="fw-bold">25.7%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="px-2 mt-2">
-                                                    <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                        <i class="mdi mdi-circle font-size-10 text-info"></i>
-                                                        <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                            <p class="font-size-15 mb-1 text-truncate">Beauty Products</p>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="fw-bold">18.6%</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="d-flex align-items-center mt-2">
-                                                        <i class="mdi mdi-circle font-size-10 text-secondary"></i>
-                                                        <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                            <p class="font-size-15 mb-0 text-truncate">Others Products</p>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="fw-bold">21.4%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="row row-cols-xxl-4 row-cols-md-2 row-cols-1">
+                    <!-- Total Sales Widget -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="avatar fs-60 avatar-img-size flex-shrink-0">
+                                        <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-24">
+                                            <i class="ti ti-credit-card"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3 class="mb-2 fw-normal">$<span data-target="124.7">0</span>K</h3>
+                                        <p class="mb-0 text-muted"><span>Total Sales</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
+                    </div><!-- end col -->
 
-                        <div class="row"> 
-                                <div class="col-xl-7">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-start mb-3">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="card-title">Sales Revenue</h5>
+                    <!-- Orders Placed Widget -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="avatar fs-60 avatar-img-size flex-shrink-0">
+                                        <span class="avatar-title bg-success-subtle text-success rounded-circle fs-24">
+                                            <i class="ti ti-shopping-cart"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3 class="mb-2 fw-normal"><span data-target="2358">0</span></h3>
+                                        <p class="mb-0 text-muted"><span>Orders Placed</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+
+                    <!-- Active Customers Widget -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="avatar fs-60 avatar-img-size flex-shrink-0">
+                                        <span class="avatar-title bg-info-subtle text-info rounded-circle fs-24">
+                                            <i class="ti ti-users"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3 class="mb-2 fw-normal"><span data-target="839">0</span></h3>
+                                        <p class="mb-0 text-muted"><span>Active Customers</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+
+                    <!-- Refund Requests Widget -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="avatar fs-60 avatar-img-size flex-shrink-0">
+                                        <span class="avatar-title bg-warning-subtle text-warning rounded-circle fs-24">
+                                            <i class="ti ti-rotate-clockwise-2"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3 class="mb-2 fw-normal"><span data-target="41">0</span></h3>
+                                        <p class="mb-0 text-muted"><span>Refund Requests</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <div class="row g-0">
+                                    <div class="col-xxl-3 col-xl-6 order-xl-1 order-xxl-0">
+                                        <div class="p-3 border-end border-dashed">
+                                            <h4 class="card-title mb-0">Total Sales</h4>
+                                            <p class="text-muted fs-xs">
+                                                You have 21 pending orders awaiting fulfillment.
+                                            </p>
+
+                                            <div class="row mt-4">
+                                                <div class="col-lg-12">
+                                                    <div style="height: 300px;">
+                                                        <canvas id="multi-pie-chart"></canvas>
+                                                    </div>
                                                 </div>
-                                                <div class="flex-shrink-0">
+                                            </div>
+                                        </div> <!-- end .p-4-->
+                                        <hr class="d-xxl-none border-light m-0">
+                                    </div> <!-- end col-->
+                                    <div class="col-xxl-9 order-xl-3 order-xxl-1">
+                                        <div class="px-4 py-3">
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <h4 class="card-title">Sales Analytics</h4>
+                                                <a href="#!" class="link-reset text-decoration-underline fw-semibold link-offset-3">View Reports <i class="ti ti-arrow-right"></i></a>
+                                            </div>
+
+                                            <div dir="ltr">
+                                                <div class="mt-3" style="height: 330px;">
+                                                    <canvas id="sales-analytics-chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end .px-4-->
+                                    </div> <!-- end col-->
+                                    
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+                </div> <!-- end row-->
+
+                <div class="row">
+                    <div class="col-xxl-6">
+                        <div data-table data-table-rows-per-page="7" class="card">
+                            <div class="card-header justify-content-between align-items-center border-dashed">
+                                <h4 class="card-title mb-0">Product Inventory</h4>
+                                <div class="d-flex gap-2">
+                                    <a href="ecommerce-add-product.html" class="btn btn-sm btn-soft-secondary">
+                                        <i class="ti ti-plus me-1"></i> Add Product
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-primary">
+                                        <i class="ti ti-file-export me-1"></i> Export CSV
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-custom table-sm table-nowrap table-hover mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/1.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Audio</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Wireless Earbuds</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">180 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$59.90</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(52)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-success"></i> Active</h5>
+                                                </td>
+                                                <td style="width: 30px;">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            <span class="fw-semibold">Year:</span> <span
-                                                                class="text-muted">2021<i
-                                                                    class="mdi mdi-chevron-down ms-1"></i></span>
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="#">2019</a>
-                                                            <a class="dropdown-item" href="#">2020</a>
-                                                            <a class="dropdown-item" href="#">2021</a>
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-center">
-                                                <div class="col-xxl-7">
-                                                    <div class="py-3">
-                                                        <div id="world-map-markers" style="height: 300px"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/2.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Accessories</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Laptop Stand</a></h5>
+                                                        </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-xl-5">
-                                                    <div class="table-responsive">
-                                                            <table class="table table-centered align-middle table-nowrap mb-0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th style="width: 500px;">Countries</th>
-                                                                        <th>Orders</th>
-                                                                        <th>Earnings</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <img src="assets/images/flags/us.jpg" class="rounded" alt="user-image" height="18">
-                                                                                <div class="flex-grow-1 ms-3">
-                                                                                    <p class="mb-0 text-truncate">United States</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>46k</td>
-                                                                        <td>$6,524.30</td>
-                                                                    </tr>
-                    
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <img src="assets/images/flags/italy.jpg" class="rounded" alt="user-image" height="18">
-                                                                                <div class="flex-grow-1 ms-3">
-                                                                                    <p class="mb-0 text-truncate">Italy</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>86k</td>
-                                                                        <td>$6,985.94</td>
-                                                                    </tr>
-                    
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <img src="assets/images/flags/spain.jpg" class="rounded" alt="user-image" height="18">
-                                                                                <div class="flex-grow-1 ms-3">
-                                                                                    <p class="mb-0 text-truncate">Spain</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>86k</td>
-                                                                        <td>$5,685.47</td>
-                                                                    </tr>
-                    
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <img src="assets/images/flags/french.jpg" class="rounded" alt="user-image" height="18">
-                                                                                <div class="flex-grow-1 ms-3">
-                                                                                    <p class="mb-0 text-truncate">French</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>56k</td>
-                                                                        <td>$5,645.45</td>
-                                                                    </tr>
-                                                                
-                                                                </tbody>
-                                                            </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xxl-5">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-wrap align-items-center mb-3">
-                                                <h5 class="card-title me-2">Invoice List</h5>
-                                                <div class="ms-auto">
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">45 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$29.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(11)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-warning"></i> Low Stock</h5>
+                                                </td>
+                                                <td style="width: 30px;">
                                                     <div class="dropdown">
-                                                        <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="text-muted font-size-12">Sort By: </span> <span class="fw-medium"> Weekly<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
                                                         </a>
-                                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                                            <a class="dropdown-item" href="#">Monthly</a>
-                                                            <a class="dropdown-item" href="#">Yearly</a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/3.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Gadgets</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Drone Camera</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">0 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$199.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-half-filled"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(8)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-danger"></i> Out of Stock</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/4.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Electronics</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Portable Projector</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">32 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$120.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(16)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-warning"></i> Limited</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/5.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Mobiles</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Smartphone G12</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">85 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$499.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(112)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-success"></i> Active</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                            <div class="mx-n4" data-simplebar style="max-height: 332px;">
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style="width: 30px;">
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" name="check" class="form-check-input" id="checkAll">
-                                                                        <label class="form-check-label" for="checkAll"></label>
-                                                                    </div>
-                                                                </th>
-                                                                <th>#Invoice</th>
-                                                                <th style="width: 190px;">User Name</th>
-                                                                <th>Date</th>
-                                                                <th>Status</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#562354</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-1.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Neal Matthews
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                10 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-success-subtle text-success  font-size-12">Paid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>   
-                                                            
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#485625</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-2.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Connie Franco
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                10 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-success-subtle text-success  font-size-12">Paid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>  
-    
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#321458</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-3.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Adella Perez
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                12 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-danger-subtle text-danger  font-size-12">Unpaid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr> 
-    
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#214569</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-4.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Theresa Mayers
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                21 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-success-subtle text-success  font-size-12">Paid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr> 
-    
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#565423</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-5.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Oliver Gonzales
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                25 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-danger-subtle text-danger  font-size-12">Unpaid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr> 
-    
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check font-size-16">
-                                                                        <input type="checkbox" class="form-check-input">
-                                                                        <label class="form-check-label"></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">#565423</td>
-                                                                <td style="width: 190px;">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-                                                                        <div class="flex-grow-1 ms-3">
-                                                                            Willie Verner
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                30 Dec
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge bg-success-subtle text-success  font-size-12">Paid</div>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                                        </a>
-                    
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                                            <a class="dropdown-item" href="#">Print</a>
-                                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr> 
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/6.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Audio</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Noise Cancelling Headphones</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">25 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$129.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-half-filled"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(78)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-warning"></i> Low Stock</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                        </div>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/7.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Home Tech</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Mini Air Purifier</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">0 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$49.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-half-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(34)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-danger"></i> Out of Stock</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/8.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Accessories</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">USB-C Docking Station</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">142 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$89.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(64)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-success"></i> Active</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/products/9.png" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Gadgets</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-product-details.html" class="text-body">Digital Photo Frame</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Stock</span>
+                                                    <h5 class="fs-base fw-normal mb-0">58 units</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Price</span>
+                                                    <h5 class="fs-base fw-normal mb-0">$74.95</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Ratings</span>
+                                                    <h5 class="fs-base fw-normal mb-0">
+                                                        <span class="text-warning">
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star-filled"></span>
+                                                            <span class="ti ti-star"></span>
+                                                        </span>
+                                                        <span class="ms-1"><a href="ecommerce-reviews.html" class="link-reset fw-semibold">(40)</a></span>
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base fw-normal mb-0"><i class="ti ti-circle-filled fs-xs text-success"></i> Active</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">Edit Product</a>
+                                                            <a href="#" class="dropdown-item">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div> <!-- end table-responsive-->
+                            </div> <!-- end card-body-->
+
+                            <div class="card-footer border-0">
+                                <div class="align-items-center justify-content-between row text-center text-sm-start">
+                                    <div class="col-sm">
+                                        <div data-table-pagination-info="products"></div>
                                     </div>
+                                    <div class="col-sm-auto mt-3 mt-sm-0">
+                                        <div data-table-pagination></div>
+                                    </div> <!-- end col-->
+                                </div> <!-- end row-->
+                            </div> <!-- end card-footer-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+
+                    <div class="col-xxl-6">
+                        <div data-table data-table-rows-per-page="7" class="card">
+                            <div class="card-header justify-content-between align-items-center border-dashed">
+                                <h4 class="card-title mb-0">Recent Orders</h4>
+                                <div class="d-flex gap-2">
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-soft-secondary">
+                                        <i class="ti ti-plus me-1"></i> Add Order
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-primary">
+                                        <i class="ti ti-file-export me-1"></i> Export CSV
+                                    </a>
                                 </div>
-                        </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-custom table-sm table-nowrap table-hover mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-1.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Alice Cooper</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2001</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Noise Cancelling Headphones</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-05-01</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$199.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Delivered</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-2.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">David Lee</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2002</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">4K Monitor</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-30</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$349.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-warning"></i> Pending</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-3.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Sophia Turner</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2003</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Mechanical Keyboard</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-29</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$89.49</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Completed</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-4.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">James Wilson</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2004</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Drone Camera</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-28</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$450.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-danger"></i> Cancelled</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-5.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Ava Carter</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2005</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Wireless Earbuds</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-27</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$129.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Completed</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Ethan Brooks</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2011</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">VR Headset</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-05-02</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$299.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Completed</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-7.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Mia Clarke</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2012</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Portable Charger</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-05-01</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$59.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Completed</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-8.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Lucas Perry</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2013</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Smartphone Gimbal</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-30</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$149.99</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-warning"></i> Pending</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-9.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Chloe Adams</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2014</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">LED Desk Lamp</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-29</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$45.00</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Delivered</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                                        <div>
+                                                            <span class="text-muted fs-xs">Benjamin Gray</span>
+                                                            <h5 class="fs-base mb-0"><a href="ecommerce-order-details.html" class="text-body">#ORD-2015</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Product</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">Noise Meter</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Date</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">2025-04-28</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Amount</span>
+                                                    <h5 class="fs-base mb-0 fw-normal">$75.49</h5>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted fs-xs">Status</span>
+                                                    <h5 class="fs-base mb-0 fw-normal"><i class="ti ti-circle-filled fs-xs text-success"></i> Delivered</h5>
+                                                </td>
+                                                <td style="width: 30px;">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical fs-lg"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="#" class="dropdown-item">View Details</a>
+                                                            <a href="#" class="dropdown-item">Cancel Order</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div> <!-- end table-responsive-->
+                            </div> <!-- end card-body-->
+
+                            <div class="card-footer border-0">
+                                <div class="align-items-center justify-content-between row text-center text-sm-start">
+                                    <div class="col-sm">
+                                        <div data-table-pagination-info="orders"></div>
+                                    </div>
+                                    <div class="col-sm-auto mt-3 mt-sm-0">
+                                        <div data-table-pagination></div>
+                                    </div> <!-- end col-->
+                                </div> <!-- end row-->
+                            </div> <!-- end card-footer-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+                </div> <!-- end row-->
 
 @endsection
 
