@@ -21,6 +21,8 @@
 
     <!-- Summernote Plugin CSS -->
     <link href="/assets/plugins/summernote/summernote-bs5.min.css" rel="stylesheet">    
+     <!-- Select Plugin CSS -->
+    <link rel="stylesheet" href="/assets/plugins/select2/select2.min.css">
 
     <!-- Theme Config Js -->
     <script src="/assets/js/config.js"></script>
@@ -675,6 +677,12 @@
 
     <!-- Sweet Alerts js -->
     <script src="/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Select2 Plugin Js -->
+    <script src="/assets/plugins/select2/select2.min.js"></script>
+
+    <!--Select 2 Demo js-->
+    <script src="/assets/js/pages/form-select2.js"></script>
 
     <!-- Sweet alert demo js-->
     <script src="/assets/js/pages/misc-sweetalerts.js"></script>

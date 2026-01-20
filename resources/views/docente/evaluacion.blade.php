@@ -11,7 +11,7 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="#">
+                <form>
                     @csrf
                     <div class="row g-4">
 
@@ -23,40 +23,34 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Periodo Académico</label>
-                                <select class="form-select">
-                                    <option selected disabled>Seleccionar periodo</option>
-                                    <option>Periodo 1</option>
-                                    <option>Periodo 2</option>
-                                    <option>Periodo 3</option>
+                                <select id="select2Periodos" class="form-control select2" data-toggle="select2">
+                                    
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Facultad</label>
-                                <select class="form-select">
-                                    <option selected disabled>Seleccionar facultad</option>
+                                <select id="select2Facultades" class="form-control select2" data-toggle="select2">
+
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Programa / Especialidad</label>
-                                <select class="form-select">
-                                    <option selected disabled>Seleccionar programa</option>
+                                <select id="select2Programas" class="form-control select2" data-toggle="select2">
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Curso</label>
-                                <select class="form-select">
-                                    <option selected disabled>Seleccionar curso</option>
+                                <select id="select2Cursos" class="form-control select2" data-toggle="select2">
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Docente</label>
-                                <select class="form-select">
-                                    <option selected disabled>Seleccionar docente</option>
-                                </select>
+                                    <select id="select2Docentes" class="form-control select2" data-toggle="select2">
+                                    </select>                                
                             </div>
 
                         </div>
@@ -313,8 +307,6 @@
 
 @section('script')
 
-
-
     <!-- Summernote Plugin Js -->
     <script src="/assets/plugins/summernote/summernote-bs5.min.js"></script>
 
@@ -322,6 +314,196 @@
     <script src="/assets/js/pages/form-summernote.js"></script>
 
 
+
+<script>
+    $(document).ready(function() {
+        
+
+        $.ajax({
+            type: 'GET',
+            url:"{{ route('docente.evaluacion.lista-periodo') }}",
+            dataType: 'json',
+            success: function (response) {                
+                if(response.status == 200){
+                    $('#select2Periodos').empty();                    
+                    $('#select2Periodos').append('<option value="">Seleccionar periodo</option>');                    
+                    $.each(response.message, function(index, p) {
+                        $('#select2Periodos').append('<option value="' + p.n_codper + '">' + p.n_codper + '</option>');
+                    });
+                    
+                } else {
+                    GS.modalAdvertencia(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                GS.modalError('Error en la solicitud AJAX', error);
+            }
+        });
+
+        $('#select2Periodos').on('change', function() {
+            var n_codper = $(this).val();
+            
+            // LIMPIAR TODOS LOS SELECTS DEPENDIENTES
+            $('#select2Facultades').empty().append('<option value="">Seleccionar facultad</option>');
+            $('#select2Programas').empty().append('<option value="">Seleccionar programa</option>');
+            $('#select2Cursos').empty().append('<option value="">Seleccionar curso</option>');
+            $('#select2Docentes').empty().append('<option value="">Seleccionar docente</option>');
+            
+            if (n_codper) {
+                GS.inicioSolicitud();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('docente.evaluacion.periodo-facultades') }}",
+                    data: { n_codper: n_codper },
+                    dataType: 'json',
+                    success: function(response) {
+                        GS.finSolicitud();
+                        if (response.status == 200) {
+                            $('#select2Facultades').empty();
+                            $('#select2Facultades').append('<option value="">Seleccionar facultad</option>');
+                            $.each(response.message, function(index, f) {
+                                $('#select2Facultades').append('<option value="' + f.c_codfac + '">' + f.facultad + '</option>');
+                            });
+                        } else {
+                            GS.modalAdvertencia(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        GS.finSolicitud();
+                        GS.modalError('Error en la solicitud AJAX', error);
+                    }
+                });
+            }
+        });
+
+
+        $('#select2Facultades').on('change', function() {
+            var n_codper = $('#select2Periodos').val();
+            var c_codfac = $(this).val();
+            
+            // LIMPIAR SELECTS DEPENDIENTES
+            $('#select2Programas').empty().append('<option value="">Seleccionar programa</option>');
+            $('#select2Cursos').empty().append('<option value="">Seleccionar curso</option>');
+            $('#select2Docentes').empty().append('<option value="">Seleccionar docente</option>');
+            
+            if (c_codfac) {
+                GS.inicioSolicitud();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('docente.evaluacion.facultad-progracademico') }}",
+                    data: { n_codper: n_codper, c_codfac: c_codfac },
+                    dataType: 'json',
+                    success: function(response) {
+                        GS.finSolicitud();
+                        if (response.status == 200) {
+                            $('#select2Programas').empty();
+                            $('#select2Programas').append('<option value="">Seleccionar programa</option>');
+                            $.each(response.message, function(index, p) {
+                                $('#select2Programas').append('<option value="' + p.c_codesp + '">' + p.prog_academico + '</option>');
+                            });
+                        } else {
+                            GS.modalAdvertencia(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        GS.finSolicitud();
+                        GS.modalError('Error en la solicitud AJAX', error);
+                    }
+                });
+            }
+        });
+
+
+        $('#select2Programas').on('change', function() {
+            var n_codper = $('#select2Periodos').val();
+            var c_codfac = $('#select2Facultades').val();
+            var c_codesp = $(this).val();
+            
+            // LIMPIAR SELECTS DEPENDIENTES
+            $('#select2Cursos').empty().append('<option value="">Seleccionar curso</option>');
+            $('#select2Docentes').empty().append('<option value="">Seleccionar docente</option>');
+            
+            if (c_codesp) {
+                GS.inicioSolicitud();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('docente.evaluacion.prog-academico-cursos') }}",
+                    data: { n_codper: n_codper, c_codfac: c_codfac, c_codesp: c_codesp },
+                    dataType: 'json',
+                    success: function(response) {
+                        GS.finSolicitud();
+                        if (response.status == 200) {
+                            $('#select2Cursos').empty();
+                            $('#select2Cursos').append('<option value="">Seleccionar curso</option>');
+                            $.each(response.message, function(index, c) {
+                                $('#select2Cursos').append('<option value="' + c.c_codcur + '" data-nombre="' + c.nom_curso_seccion + '">' + c.nom_curso_seccion + '</option>');
+                            });
+                        } else {
+                            GS.modalAdvertencia(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        GS.finSolicitud();
+                        GS.modalError('Error en la solicitud AJAX', error);
+                    }
+                });
+            }
+        });
+
+
+        $('#select2Cursos').on('change', function() {
+            var n_codper = $('#select2Periodos').val();
+            var c_codfac = $('#select2Facultades').val();
+            var c_codesp = $('#select2Programas').val();
+            var c_codcur = $(this).val();
+            var c_grpcur = $('#select2Cursos option:selected').text().split(' - ')[1];
+            
+            // LIMPIAR SELECT DEPENDIENTE
+            $('#select2Docentes').empty().append('<option value="">Seleccionar docente</option>');
+            
+            if (n_codper && c_codfac && c_codesp && c_codcur && c_grpcur) {
+                GS.inicioSolicitud();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('docente.evaluacion.cursos-docentes') }}",
+                    data: { n_codper: n_codper,
+                             c_codfac: c_codfac, 
+                             c_codesp: c_codesp, 
+                             c_codcur: c_codcur, 
+                             c_grpcur: c_grpcur 
+                            },
+                    dataType: 'json',
+                    success: function(response) {
+                        GS.finSolicitud();
+                        if (response.status == 200) {
+                            $('#select2Docentes').empty();
+                            $('#select2Docentes').append('<option value="">Seleccionar docente</option>');
+                            $.each(response.message, function(index, d) {
+                                $('#select2Docentes').append('<option value="' + d.c_dnidoc + '" data-nombre="' + d.nombres + '">' + d.nombres + '</option>');
+                            });
+                        } else {
+                            GS.modalAdvertencia(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        GS.finSolicitud();
+                        GS.modalError('Error en la solicitud AJAX', error);
+                    }
+                });
+            }
+        });
+        });
+
+
+
+
+
+
+
+
+
+
+</script>
 
 
 @endsection
