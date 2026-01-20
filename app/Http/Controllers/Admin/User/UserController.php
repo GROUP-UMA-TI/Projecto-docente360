@@ -166,37 +166,78 @@ class UserController extends Controller
             $modulos = Modulo::where('estado', 'A')->get();
             $permisosUsuario = Permission::where('user_id', $user->id)->where('estado', 'A')->pluck('item_id')->toArray();
 
+            // Información del usuario
+            $html .= '
+            <div class="col-12 mb-4">
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="ti ti-user-check fs-4 me-2"></i>
+                    <div>
+                        <strong>Usuario:</strong> ' . $user->name . ' ' . $user->lastname . ' 
+                        <small class="text-muted">(' . $user->email . ')</small>
+                    </div>
+                </div>
+            </div>';
+
             foreach ($modulos as $modulo) {
-                $html .= '<div class="col-12"><h2 class="card-title">______________ ' . $modulo->nombre . ' ______________</h2><br></div>';
                 $submodulos = SubModulo::where('modulo_id', $modulo->id)->where('estado', 'A')->get();
+                
+                if ($submodulos->count() > 0) {
+                    // Card para cada módulo
+                    $html .= '
+                    <div class="col-12 mb-4">
+                        <div class="card border-primary shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="ti ti-folder fs-5 me-2"></i>' . $modulo->nombre . '
+                                </h5>
+                            </div>
+                            <div class="card-body">';
 
-                foreach ($submodulos as $submodulo) {
-                    $html .= '<div class="col-12 ml-2"><span><h5 class="card-title">' . $submodulo->nombre . '</h5></span></div>';
-                    $items = Item::where('submodulo_id', $submodulo->id)->where('estado', 'A')->get();
-                    $html .= '<div class="col-12 ml-2"><div class="row">';
+                    foreach ($submodulos as $submodulo) {
+                        $items = Item::where('submodulo_id', $submodulo->id)->where('estado', 'A')->get();
+                        
+                        if ($items->count() > 0) {
+                            // Submódulo con diseño elegante
+                            $html .= '
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="ti ti-folder-open text-secondary me-2"></i>
+                                    <h6 class="mb-0 text-secondary fw-bold">' . $submodulo->nombre . '</h6>
+                                </div>
+                                <div class="row g-3">';
 
-                    foreach ($items as $item) {
-                        $checked = in_array($item->id, $permisosUsuario) ? 'checked' : '';
-                        $html .= '
-                    <div class="col">
-                        <div class="custom-control custom-checkbox mb-3 check-xs">
-                            <input type="checkbox" class="custom-control-input" name="items[]" id="item_' . $item->id . '" ' . $checked . '>
-                            <label class="custom-control-label" for="item_' . $item->id . '">' . $item->nombre . '</label>
-                        </div>
-                    </div>';
+                            foreach ($items as $item) {
+                                $checked = in_array($item->id, $permisosUsuario) ? 'checked' : '';
+                                $html .= '
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check p-3 border rounded-3 h-100 hover-shadow">
+                                        <input class="form-check-input" type="checkbox" name="items[]" id="item_' . $item->id . '" ' . $checked . '>
+                                        <label class="form-check-label fw-medium" for="item_' . $item->id . '">
+                                            <i class="ti ti-key text-warning me-2"></i>' . $item->nombre . '
+                                        </label>
+                                    </div>
+                                </div>';
+                            }
+
+                            $html .= '
+                                </div>
+                            </div>';
+                        }
                     }
 
-                    $html .= '</div></div>';
+                    $html .= '
+                            </div>
+                        </div>
+                    </div>';
                 }
-
-                $html .= '<br>';
             }
+            
             $datos = [
                 'html' => $html,
                 'id' => Encryption::encriptar($user->id)
             ];
 
-            return response()->json(Service::responseSuccess('Lista', $datos));
+            return response()->json(Service::responseSuccess('Permisos cargados correctamente', $datos));
         } else {
             return response()->json(Service::responseError('Usuario no encontrado'));
         }

@@ -1,5 +1,30 @@
 @extends('layouts.app')
 
+@section('link')
+<style>
+    .hover-shadow {
+        transition: all 0.3s ease;
+    }
+    .hover-shadow:hover {
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2) !important;
+        transform: translateY(-2px);
+    }
+    .form-check:hover .form-check-label {
+        color: #0d6efd;
+    }
+
+    .border-primary {
+        border-color: rgba(13, 110, 253, 0.3) !important;
+    }
+    .alert-info {
+        background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+        border: none;
+        border-left: 4px solid #17a2b8;
+    }
+  
+</style>
+@endsection
+
 @section('content')
 
 <div class="row">
