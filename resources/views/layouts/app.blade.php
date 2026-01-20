@@ -33,10 +33,29 @@
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
+    <link href="/assets/css/divloading.css" rel="stylesheet">
+
     @yield('link')
 </head>
 
 <body>
+
+<!-- LOADING OVERLAY UMA -->
+<div id="divLoading">
+    <div id="subdivLoading" class="text-center">
+        <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-3 mb-0 text-primary fw-medium">
+            Cargando plataforma UMA, por favor espere...
+        </p>
+    </div>
+</div>
+
+
+
+
+    
     <!-- Begin page -->
     <div class="wrapper">
 
