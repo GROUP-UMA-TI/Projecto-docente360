@@ -21,7 +21,7 @@ class SubModuloTableSeeder extends Seeder
             ],
             [
                 'modulo_id' => 2,
-                'nombre' => 'Planes de estudio',
+                'nombre' => 'Evaluación y Seguimiento',
                 'codigo' => '2.1'
             ],
          

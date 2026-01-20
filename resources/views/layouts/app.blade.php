@@ -2,17 +2,25 @@
 <html lang="en">
 
 
-<!-- Mirrored from coderthemes.com/ubold/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jan 2026 02:31:57 GMT -->
 <head>
     <meta charset="utf-8">
-    <title>Dashboard | UBold - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title>{{ config('app.name', 'Laravel') }} | Projecto Docente360 – Plataforma de Gestión y Evaluación Educativa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="UBold is a modern, responsive admin dashboard available on ThemeForest. Ideal for building CRM, CMS, project management tools, and custom web applications with a clean UI, flexible layouts, and rich features.">
-    <meta name="keywords" content="UBold, admin dashboard, ThemeForest, Bootstrap 5 admin, responsive admin, CRM dashboard, CMS admin, web app UI, admin theme, premium admin template">
-    <meta name="author" content="Coderthemes">
-
+    <meta name="description" content="Projecto-docente360 es una plataforma integral para la gestión educativa que permite la observación, evaluación y seguimiento de docentes, control de asistencia, encuestas de satisfacción, y generación de reportes detallados para una administración eficiente y completa del desempeño académico." />
+    <meta name="keywords" content="gestión educativa, evaluación docente, seguimiento docente, observación de clases, control de asistencia, encuestas educativas, reportes académicos, desempeño docente, plataforma educativa, sistema de gestión escolar, administración educativa, educación digital">
+    <meta content="Developers UMA" name="author" />
+    <!-- CSRF Token -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <!-- Datatables css -->
+    <link href="/assets/plugins/datatables/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Sweet Alert css-->
+    <link href="/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Summernote Plugin CSS -->
+    <link href="/assets/plugins/summernote/summernote-bs5.min.css" rel="stylesheet">    
 
     <!-- Theme Config Js -->
     <script src="/assets/js/config.js"></script>
@@ -22,6 +30,8 @@
 
     <!-- App css -->
     <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <!-- Scripts -->
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
     @yield('link')
 </head>
@@ -35,14 +45,14 @@
         <div class="sidenav-menu">
 
             <!-- Brand Logo -->
-            <a href="index.html" class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <span class="logo logo-light">
-                    <span class="logo-lg"><img src="/assets/images/logo-uma.png" alt="logo"></span>
+                    <span class="logo-lg"><img src="/assets/images/logo-uma-.png" alt="logo" style="height:70px;"></span>
                     <span class="logo-sm"><img src="/assets/images/logo-sm.png" alt="small logo"></span>
                 </span>
 
                 <span class="logo logo-dark">
-                    <span class="logo-lg"><img src="/assets/images/logo-black.png" alt="dark logo"></span>
+                    <span class="logo-lg"><img src="/assets/images/logo-uma-.png" alt="logo" style="height:70px;"></span>
                     <span class="logo-sm"><img src="/assets/images/logo-sm.png" alt="small logo"></span>
                 </span>
             </a>
@@ -59,70 +69,7 @@
 
             <div class="scrollbar" data-simplebar>
 
-                <!-- User -->
-                <div class="sidenav-user">
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <a href="users-profile.html" class="link-reset">
-                                <img src="/assets/images/users/user-3.jpg" alt="user-image" class="rounded-circle mb-2 avatar-md">
-                                <span class="sidenav-user-name fw-bold">Geneva K.</span>
-                                <span class="fs-12 fw-semibold" data-lang="user-role">Art Director</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dropdown-toggle drop-arrow-none link-reset sidenav-user-set-icon" data-bs-toggle="dropdown" data-bs-offset="0,12" href="#!" aria-haspopup="false" aria-expanded="false">
-                                <i class="ti ti-settings fs-24 align-middle ms-1"></i>
-                            </a>
-
-                            <div class="dropdown-menu">
-                                <!-- Header -->
-                                <div class="dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome back!</h6>
-                                </div>
-
-                                <!-- My Profile -->
-                                <a href="profile.html" class="dropdown-item">
-                                    <i class="ti ti-user-circle me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Profile</span>
-                                </a>
-
-                                <!-- Notifications -->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="ti ti-bell-ringing me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Notifications</span>
-                                </a>
-
-                                <!-- Settings -->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="ti ti-settings-2 me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Account Settings</span>
-                                </a>
-
-                                <!-- Support -->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="ti ti-headset me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Support Center</span>
-                                </a>
-
-                                <!-- Divider -->
-                                <div class="dropdown-divider"></div>
-
-                                <!-- Lock -->
-                                <a href="auth-lock-screen.html" class="dropdown-item">
-                                    <i class="ti ti-lock me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Lock Screen</span>
-                                </a>
-
-                                <!-- Logout -->
-                                <a href="javascript:void(0);" class="dropdown-item fw-semibold">
-                                    <i class="ti ti-logout-2 me-2 fs-17 align-middle"></i>
-                                    <span class="align-middle">Log Out</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+ 
 
                 <!--- Sidenav Menu -->
                 <ul class="side-nav">
@@ -135,32 +82,32 @@
                         </a>
                     </li>
 
-
                     <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                            <span class="menu-icon"><i data-lucide="inbox"></i></span>
-                            <span class="menu-text" data-lang="email">Email</span>
-                            <span class="badge text-bg-danger">New</span>
+                        <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
+                            <span class="menu-icon"><i class="ti ti-users"></i></span>
+                            <span class="menu-text" data-lang="maps">Gestión Usuarios</span>
+                            <span class="menu-arrow"></span>
                         </a>
-                        <div class="collapse" id="sidebarEmail">
+                        <div class="collapse" id="sidebarMaps">
                             <ul class="sub-menu">
                                 <li class="side-nav-item">
-                                    <a href="email.html" class="side-nav-link">
-                                        <span class="menu-text" data-lang="email-inbox">Inbox</span>
+                                    <a href="{{ route('admin.usuarios') }}" class="side-nav-link">
+                                        <span class="menu-text" data-lang="maps-vector">Lista Usuarios</span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="email-details.html" class="side-nav-link">
-                                        <span class="menu-text" data-lang="email-details">Details</span>
+                                    <a href="{{ route('admin.usuarios.permisos') }}" class="side-nav-link">
+                                        <span class="menu-text" data-lang="maps-leaflet">Permisos Usuarios</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    
 
                     <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarCRM" aria-expanded="false" aria-controls="sidebarCRM" class="side-nav-link">
-                            <span class="menu-icon"><i data-lucide="users"></i></span>
+                            <span class="menu-icon"><i class="ti ti-chalkboard-teacher"></i></span>
                             <span class="menu-text" data-lang="users"> Gestión Docente </span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -172,7 +119,7 @@
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="#" class="side-nav-link">
+                                    <a href="{{ route('docente.historial-evaluacion') }}" class="side-nav-link">
                                         <span class="menu-text" data-lang="crm-opportunities">Historial de Evaluaciones</span>
                                     </a>
                                 </li>
@@ -197,9 +144,9 @@
                     <!-- Topbar Brand Logo -->
                     <div class="logo-topbar">
                         <!-- Logo light -->
-                        <a href="index.html" class="logo-light">
+                        <a href="{{ route('home') }}" class="logo-light">
                             <span class="logo-lg">
-                                <img src="/assets/images/logo-uma.png" alt="logo">
+                                <img src="/assets/images/logo-uma-.png" alt="logo">
                             </span>
                             <span class="logo-sm">
                                 <img src="/assets/images/logo-sm.png" alt="small logo">
@@ -207,9 +154,9 @@
                         </a>
 
                         <!-- Logo Dark -->
-                        <a href="index.html" class="logo-dark">
+                        <a href="{{ route('home') }}" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="/assets/images/logo-black.png" alt="dark logo">
+                                <img src="/assets/images/logo-uma-.png" alt="dark logo">
                             </span>
                             <span class="logo-sm">
                                 <img src="/assets/images/logo-sm.png" alt="small logo">
@@ -339,7 +286,7 @@
 
         <div class="content-page">
 
-            <div class="container-fluid">
+            <div class="container-fluid pt-3">
 
                 
                 @yield('content')
@@ -352,7 +299,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 text-center">
-                            © <script>document.write(new Date().getFullYear())</script> Desarrallado con ❤️<span class="fw-semibold">por Developers UMA</span> 
+                            © <script>document.write(new Date().getFullYear())</script> Desarrollado con <i class="ti ti-heart"></i> por <span class="fw-semibold">Developers UMA</span>
                         </div>
                     </div>
                 </div>
@@ -416,7 +363,7 @@
 
                     <div class="col-6">
                         <div class="form-check card-radio shadow">
-                            <input class="form-check-input" type="radio" name="data-skin" id="demo-skin-saas" value="saas">
+                            <input class="form-check-input" type="radio" name="data-skin" id="demo-skin-saas" value="saas" checked>
                             <label class="form-check-label p-0 w-100" for="demo-skin-saas">
                                 <img src="/assets/images/layouts/themes/theme-saas.png" alt="layout-img" class="img-fluid">
                             </label>
@@ -697,7 +644,23 @@
     <!-- Dashboard Page js -->
     <script src="/assets/js/pages/dashboard.js"></script>
 
-    @stack('script')
+    <!-- Jquery for Datatables-->
+    <script src="/assets/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Datatables js -->
+    <script src="/assets/plugins/datatables/dataTables.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.bootstrap5.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/assets/plugins/datatables/responsive.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="/uma/uma-functions.js"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet alert demo js-->
+    <script src="/assets/js/pages/misc-sweetalerts.js"></script>
+
+    @yield('script')
 
 </body>
 

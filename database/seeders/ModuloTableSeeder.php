@@ -19,7 +19,7 @@ class ModuloTableSeeder extends Seeder
                 'codigo' => '1'
             ],                      
             [
-                'nombre' => 'Gestión Académica',
+                'nombre' => 'Gestión Docente',
                 'codigo' => '2'
             ],
            

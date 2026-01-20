@@ -1,21 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-                <div class="page-title-head d-flex align-items-center">
-                    <div class="flex-grow-1">
-                        <h4 class="fs-xl fw-bold m-0">Dashboard</h4>
-                    </div>
-
-                    <div class="text-end">
-                        <ol class="breadcrumb m-0 py-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                            
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
                 
 
                 <div class="row row-cols-xxl-4 row-cols-md-2 row-cols-1">
@@ -1036,13 +1021,8 @@
 
 @section('script')
 
-        <!-- apexcharts -->
-        <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
-
-        <!-- Vector map-->
-        <script src="/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="/assets/libs/jsvectormap/maps/world-merc.js"></script>
+     
         
-        <script src="/assets/js/pages/dashboard.init.js"></script>
+    
 
 @endsection

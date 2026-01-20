@@ -103,7 +103,7 @@
     --ins-highlight-bg: #fdf1db;
     --ins-border-width: 1px;
     --ins-border-style: solid;
-    --ins-border-color: #e7e9eb;
+    --ins-border-color: #e2e2e4;
     --ins-border-color-translucent: #eef2f7;
     --ins-border-radius: 0.3rem;
     --ins-border-radius-sm: 0.25rem;
@@ -2470,7 +2470,7 @@ progress {
     padding-bottom: calc(.4532rem + var(--ins-border-width));
     margin-bottom: 0;
     font-size: inherit;
-    font-weight: var(--ins-font-weight-semibold);
+   /* font-weight: var(--ins-font-weight-semibold);*/
     line-height: 1.5
 }
 
@@ -16089,7 +16089,7 @@ html[data-skin=saas] {
     --ins-font-sans-serif: "Inter",sans-serif;
     --ins-font-family-secondary: "Inter",sans-serif;
     --ins-body-font-size: 13px;
-    --ins-body-bg: #f9fbfd;
+    --ins-body-bg: #f1f2f7;
     --ins-secondary-bg: #fff;
     --ins-theme-card-border-width: 1px;
     --ins-theme-card-box-shadow: 0 0.5rem 1.5rem rgba(18,38,36,0.03);
@@ -16126,14 +16126,14 @@ html[data-skin=saas] {
     --ins-chart-dark-rgb: 251,191,36;
     --ins-chart-border-color: #ecf4fc;
     --ins-chart-title-color: #bbcae1;
-    --ins-primary: #6366f1;
+    --ins-primary: #e50a5e;
     --ins-secondary: #0ea5e9;
     --ins-success: #10b981;
     --ins-info: #3b82f6;
     --ins-warning: #fbbf24;
     --ins-danger: #ef4444;
     --ins-purple: #a855f7;
-    --ins-primary-rgb: 99,102,241;
+    --ins-primary-rgb: 229,10,94;
     --ins-secondary-rgb: 14,165,233;
     --ins-success-rgb: 16,185,129;
     --ins-info-rgb: 59,130,246;
@@ -16167,10 +16167,10 @@ html[data-skin=saas][data-menu-color=light] {
     --ins-sidenav-bg: #fff;
     --ins-sidenav-border-color: #fff;
     --ins-sidenav-item-color: #6c757d;
-    --ins-sidenav-item-hover-color: #6366f1;
+    --ins-sidenav-item-hover-color: #e50a5e;
     --ins-sidenav-item-hover-bg: #f4f0ff;
-    --ins-sidenav-item-active-color: #6366f1;
-    --ins-sidenav-item-active-bg: #f4f0ff
+    --ins-sidenav-item-active-color: #e50a5e;
+    --ins-sidenav-item-active-bg: #e50a5e1f;
 }
 
 html[data-skin=saas][data-menu-color=gray] {
@@ -19678,7 +19678,7 @@ html[data-layout=topnav] .card-out-of-container {
 }
 
 .form-control:hover,.form-select:hover {
-    border-color: var(--ins-dark-border-subtle)
+    border-color:  #e50a5e70 ;/* var(--ins-dark-border-subtle) */
 }
 
 .form-control-sm {

@@ -28,11 +28,23 @@ class ItemTableSeeder extends Seeder
             ],
             [
                 'submodulo_id' => 2,
-                'nombre' => 'Planes de estudio',
+                'nombre' => 'Evaluación Docente',
                 'codigo' => '2.1.1',
                 'ruta' => 'home'
             ],
-            
+            [
+                'submodulo_id' => 2,
+                'nombre' => 'Historial de Evaluaciones',
+                'codigo' => '2.1.2',
+                'ruta' => 'home'
+            ],
+            [
+                'submodulo_id' => 2,
+                'nombre' => 'Encuestas',
+                'codigo' => '2.1.3',
+                'ruta' => 'home'
+            ]
+
         ];
 
         Item::insert($items);

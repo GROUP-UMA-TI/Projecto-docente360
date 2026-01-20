@@ -11,4 +11,11 @@ class EvalucionController extends Controller
     {
         return view('docente.evaluacion');
     }
+
+    public function historialEvaluacion()
+    {
+        return view('docente.historial-evaluacion');
+    }
+
+
 }
