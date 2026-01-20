@@ -75,37 +75,20 @@
                         $('#listaPermisos').html('');
                         $('#listaPermisos').html(response.data.html);
                         $('#id').val(response.data.id);
-                        Toastify({
-                            text: response.message,
-                            duration: 3000,
-                            gravity: "top",
-                            position: "right",
-                            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-                        }).showToast();
+                        GS.modalCorrecto(response.message);
                         $('#modal-agregarUsuario').modal('hide');
 
                     } else {
                         $('#cardPermisos').css('display','none');
-                        Toastify({
-                            text: response.message,
-                            duration: 3000,
-                            gravity: "top",
-                            position: "right",
-                            backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)"
-                        }).showToast();
+                        GS.modalAdvertencia(response.message);
+                            $('#modal-agregarUsuario').modal('hide');
 
                     }
                 },
                 error: function (error) {
                     $('#cardPermisos').css('display','none');
                     GS.finSolicitud();
-                    Toastify({
-                        text: "Error de conexión",
-                        duration: 3000,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)"
-                    }).showToast();
+                    GS.modalError('Error del servidor');
                 }
             });
         });
@@ -116,7 +99,8 @@
                 let itemId = $(this).attr('id').replace('item_', '');
                 permisosMarcados.push(itemId);
             });
-                GS.inicioSolicitud();
+            
+            GS.inicioSolicitud();
             $.ajax({
                 url: `{{route('admin.usuarios.permisos.guardar')}}`,
                 type: 'POST',
@@ -127,35 +111,15 @@
                 },
                 success: function(response) {
                     GS.finSolicitud();
-                    if (response.success) {
-                        Toastify({
-                            text: response.message,
-                            duration: 3000,
-                            gravity: "top",
-                            position: "right",
-                            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-                        }).showToast();
-
+                    if (response.status === 200) {
+                        GS.modalCorrecto(response.message);
                     } else {
-                        Toastify({
-                            text: response.message,
-                            duration: 3000,
-                            gravity: "top",
-                            position: "right",
-                            backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)"
-                        }).showToast();
-
+                        GS.modalAdvertencia(response.message);
                     }
                 },
                 error: function(xhr) {
                     GS.finSolicitud();
-                    Toastify({
-                        text: "Error del servidor",
-                        duration: 3000,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)"
-                    }).showToast();
+                    GS.modalError('Error del servidor');
                 }
             });
         });
@@ -164,4 +128,6 @@
     </script>
 
 @endsection
+
+
 
