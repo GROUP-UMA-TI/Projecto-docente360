@@ -63,7 +63,7 @@ class UserController extends Controller
                 'lastname' => $usuario->lastname,
                 'genero' => $usuario->genero,
                 'email' => $usuario->email,
-                'firma' => Storage::url($usuario->firma),
+                'firma' => $usuario->firma ? Storage::url($usuario->firma) : null,
                 'grado' => $usuario->grado,
                 'status' => $usuario->status,
             ];

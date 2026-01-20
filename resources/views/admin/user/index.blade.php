@@ -4,36 +4,32 @@
 
 <div class="row">
     <div class="col-12">
+        <div class="card">
+            <div class="card-header justify-content-between">
+                <h4 class="card-title"> Gestión de Usuarios </h4>
+                <button type="button" class="btn btn-secondary btnAdd" > <i class="ti ti-user-plus"></i> Agregar Usuario</button>
+            </div>
 
-                        <div class="card">
-                            <div class="card-header justify-content-between">
-                                <h4 class="card-title"> Gestión de Usuarios </h4>                                
-                                <button type="button" class="btn btn-secondary btnAdd" > <i class="ti ti-user-plus"></i> Agregar Usuario</button>
-                            </div>
-
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table  class="table table-striped" style="width:100%" data-tables="tablaUsuarios">
-                                    <thead class="thead-sm text-uppercase fs-xxs">
-                                        <tr>
-                                            <th>Nombres</th>
-                                            <th>Genero</th>
-                                            <th>Email</th>
-                                            <th>Grado</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table  class="table table-striped" style="width:100%" data-tables="tablaUsuarios">
+                        <thead class="thead-sm text-uppercase fs-xxs">
+                            <tr>                                
+                                <th>Nombres</th>
+                                <th>Genero</th>
+                                <th>Email</th>
+                                <th>Grado</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                                      
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div> <!-- end card-body-->
-                        </div>
-
-                        
-        
+                        </tbody>
+                    </table>
+                </div>
+            </div> <!-- end card-body-->
+        </div>
     </div>
 </div>
 
@@ -117,10 +113,10 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                                                     <i class="ti ti-cancel me-1"></i>Cancelar
                                                 </button>
-                                                <button type="button" class="btn btn-secondary" id="btnGuardarUsuario">
+                                                <button type="button" class="btn btn-secondary btnGuardarUsuario">
                                                     <i class="ti ti-device-floppy me-1"></i>Guardar Usuario
                                                 </button>
                                             </div>
@@ -212,10 +208,10 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                                                     <i class="ti ti-cancel me-1"></i>Cancelar
                                                 </button>
-                                                <button type="button" class="btn btn-primary btnActualizarUsuario">
+                                                <button type="button" class="btn btn-secondary btnActualizarUsuario">
                                                     <i class="ti ti-device-floppy me-1"></i>Actualizar Usuario
                                                 </button>
                                             </div>
@@ -264,6 +260,8 @@
 
         });
 
+        
+
          $('[data-tables="tablaUsuarios"]').on('click', '.btnEdit', function () {
             let data = {
                 id : $(this).data('id'),
@@ -286,7 +284,14 @@
                         $('#generoG').val(user.genero).change();
                         $('#emailG').val(user.email);
                         $('#gradoG').val(user.grado);
-                        $('#divFirmaG').html('<img src="' + user.firma + '" alt="Firma del usuario" style="width: 200px"/>');
+                        
+                        // Manejar firma - verificar si existe
+                        if (user.firma) {
+                            $('#divFirmaG').html('<img src="' + user.firma + '" alt="Firma del usuario" class="img-fluid" style="max-width: 200px; border: 1px solid #ddd; border-radius: 4px;"/>');
+                        } else {
+                            $('#divFirmaG').html('<p class="text-muted"><i class="ti ti-photo-off"></i> Sin firma registrada</p>');
+                        }
+                        
                         $('#estadoG').val(user.status.toString()).change();
                         $('#modal-editarUsuario').modal('show');
 
@@ -300,7 +305,7 @@
                     GS.modalError('Error', 'Ocurrió un error');
                 }
             });
-        });
+        });        
 
 
         $('.btnActualizarUsuario').on('click', function () {
@@ -312,7 +317,7 @@
             formData.append('genero', $('#generoG').val());
             formData.append('email', $('#emailG').val());
             formData.append('grado', $('#gradoG').val());
-            formData.append('estado', $('#estadoG').val());
+            formData.append('status', $('#estadoG').val());
             formData.append('password', $('#passwordG').val());
             // verificar si existe antes una firma
             let firmaG = $('#firmaG')[0].files[0];
@@ -348,10 +353,66 @@
         });
 
 
+        $('.btnGuardarUsuario').click(function () {
+            let formData = new FormData();
 
-    });
+            formData.append('name', $('#name').val());
+            formData.append('lastname', $('#lastname').val());
+            formData.append('genero', $('#genero').val());
+            formData.append('email', $('#email').val());
+            formData.append('grado', $('#grado').val());
+            formData.append('status', $('#estado').val());
+            formData.append('password', $('#password').val());
+            let firma = $('#firma')[0].files[0];
+            if (firma) {
+                formData.append('firma', firma);
+            }
+
+            GS.inicioSolicitud();
+            $.ajax({
+                url: `{{route('admin.usuarios.crear-editar')}}`,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    GS.finSolicitud();
+                    if (response.status === 200) {
+                        GS.modalCorrecto('Éxito', response.message);
+                        tablaUsuarios.ajax.reload();
+                        $('#modal-agregarUsuario').modal('hide');
+                    } else {
+                        GS.modalError('Error', response.message);
+                    }
+                },
+                error: function (error) {
+                    GS.finSolicitud();
+                    GS.modalError('Error', 'Ocurrió un error');
+                }
+            });
+        });
+
+
+        $('.btnAdd').click(function () {
+            $('#modal-agregarUsuario').modal('show');
+            $('#id').val('');
+            $('#name').val('');
+            $('#lastname').val('');
+            $('#genero').val('');
+            $('#email').val('');
+            $('#grado').val('');
+            $('#estado').val('');
+            $('#password').val('');
+            $('#firma').val('');
+        });
+
 
     
+
+    });
 
        
 

@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'directora.enfermeria_y_decana@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Dra.',
-                'firma' => 'public/uma/directores/firma/firmaPrueba.png'
+                'firma' => ''
             ],
             [
                 'name' => 'Jhonnel Williams',
@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'director.farmacia_y_decano@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Dr.',
-                'firma' => 'public/uma/directores/firma/firmaPrueba.png'
+                'firma' => ''
             ],
 
             [
@@ -50,7 +50,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'director.psicologia@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Mg.',
-                'firma' => 'public/uma/directores/firma/firmaPrueba.png'
+                'firma' => ''
             ],
 
             [
@@ -60,7 +60,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'director.nutricion@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Dr.',
-                'firma' => 'public/uma/directores/firma/firmaNutricion.png'
+                'firma' => ''
             ],
             [
                 'name' => 'Lucía Fernanda',
@@ -69,7 +69,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'directora.administracion@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Mg.',
-                'firma' => 'public/uma/directores/firma/firmaAdministracion.png'
+                'firma' => ''
             ],
             [
                 'name' => 'Oscar Manuel',
@@ -78,7 +78,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'director.contabilidad@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Mg.',
-                'firma' => 'public/uma/directores/firma/firmaContabilidad.png'
+                'firma' => ''
             ],
             [
                 'name' => 'Ana Beatriz',
@@ -87,7 +87,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'directora.ia@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Mg.',
-                'firma' => 'public/uma/directores/firma/firmaIA.png'
+                'firma' => ''
             ],
             [
                 'name' => 'Carlos Alberto',
@@ -96,7 +96,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'director.terapia@uma.edu.pe',
                 'password' => Hash::make('xyz123'),
                 'grado' => 'Dr.',
-                'firma' => 'public/uma/directores/firma/firmaTerapia.png'
+                'firma' => ''
             ],
         ];
 

@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@section('link')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/toastify.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/toastify.min.js"></script>
-@endsection
+
 @section('content')
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
@@ -36,6 +33,8 @@
         </div>
     </div>
 @endsection
+
+
 @section('script')
 <script>
     $(document).ready(function () {
@@ -104,7 +103,7 @@
             });
                 GS.inicioSolicitud();
             $.ajax({
-                url: '{{route('admin.usuarios.permisos.guardar')}}',
+                url: `{{route('admin.usuarios.permisos.guardar')}}`,
                 type: 'POST',
                 data: {
                     permisos: permisosMarcados,
