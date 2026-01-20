@@ -1,38 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row page-titles mx-0">
-        <div class="col-sm-6 p-md-0">
-            <div class="welcome-text">
-                <div class="d-flex">
-                    <input type="text" class="col-4 form-control mr-3" id="palabra">
-                    <button class="col-4 btn btn-info" id="btnBuscar">Buscar</button>
-                </div>
 
-            </div>
-        </div>
-        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Usuarios</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Permisos</a></li>
-            </ol>
-        </div>
-    </div>
-    <div class="col-xl-6 col-lg-6" id="cardPermisos" style="display: none">
+<div class="row">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Lista de permisos</h4>
-                <input type="hidden" id="id" value="">
-            </div>
-            <div class="card-body"  >
-                <div class="row" id="listaPermisos">
+            <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <h4 class="card-title mb-2 mb-md-0">Gestión de Permisos</h4>
+
+                <!-- Buscador y breadcrumb -->
+                <div class="d-flex flex-column flex-md-row gap-2 align-items-start align-items-md-center">
+                    <!-- Input de búsqueda -->
+                    <div class="d-flex gap-2 mb-2 mb-md-0">
+                        <input type="text" class="form-control" id="palabra" placeholder="Buscar permiso...">
+                        <button class="btn btn-info" id="btnBuscar">Buscar</button>
+                    </div>
 
                 </div>
-                <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+            </div>
+
+            <div class="card-body">
+                
+                <div id="cardPermisos" style="display: none;">
+                    <div class="card border shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Lista de permisos</h5>
+                            <input type="hidden" id="id" value="">
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="listaPermisos"></div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-success" id="btnGuardar">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
+</div>
+
+
+
+       
 @endsection
+
 
 
 @section('script')
