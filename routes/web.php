@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/docente/evaluacion/facultad-progracademico', 'facultadProgracademico')->name('docente.evaluacion.facultad-progracademico');
         Route::get('/docente/evaluacion/prog-academico-cursos', 'prog_academicoCursos')->name('docente.evaluacion.prog-academico-cursos');
         Route::get('/docente/evaluacion/cursos-docentes', 'cursosDocentes')->name('docente.evaluacion.cursos-docentes');
+        Route::post('/docente/evaluacion/registrar-evaluacion', 'registrarEvaluacion')->name('docente.evaluacion.registrar-evaluacion');
+        Route::post('/docente/evaluacion/pdf', 'pdfDocenteEvaluacion')->name('docente.evaluacion.pdf');
 
 
         Route::get('/docente/historial-evaluacion', 'historialEvaluacion')->name('docente.historial-evaluacion');

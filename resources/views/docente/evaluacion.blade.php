@@ -63,13 +63,13 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Evaluador</label>
-                                <input type="text" class="form-control" placeholder="Nombre del evaluador">
+                                <input type="text" class="form-control" value="{{Auth::user()->name .' '.Auth::user()->lastname}}" disabled>
                             </div>
 
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Semana</label>
-                                    <select class="form-select">
+                                    <select class="form-select" id="select2Semana">
                                         <option selected disabled>Seleccionar</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -82,7 +82,7 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Tema de la Sesión</label>
-                                    <input type="text" class="form-control" placeholder="Tema desarrollado">
+                                    <input type="text" class="form-control" placeholder="Tema desarrollado" id="temaSesion">
                                 </div>
                             </div>
 
@@ -92,23 +92,23 @@
                             <div class="row g-3">
                                 <div class="col-md-7">
                                     <label class="form-label">Resultado</label>
-                                    <input type="text" class="form-control" value="Excelente" readonly>
+                                    <input type="text" class="form-control" id="resultadoObservacion" readonly>
                                 </div>
 
                                 <div class="col-md-5">
                                     <label class="form-label">Puntaje</label>
-                                    <input type="number" class="form-control" value="20" readonly>
+                                    <input type="number" class="form-control" id="puntajeObtenido" readonly>
                                 </div>
                             </div>
                             <!-- ACCIONES -->
                             <div class="d-flex justify-content-end gap-2 mt-4">
-                                <button type="button" class="btn btn-outline-success">
+                                <button type="button" class="btn btn-outline-success" id="btnExportarPDF">
                                     Exportar PDF
                                 </button>
-                                <button type="button" class="btn btn-warning">
+                                <button type="button" class="btn btn-warning" id="btnCalcularNota">
                                     Calcular Nota
                                 </button>
-                                <button type="submit" class="btn btn-info">
+                                <button type="button" class="btn btn-info" id="btnRegistrarEvaluacion">
                                     Registrar Evaluación
                                 </button>
                             </div>
@@ -290,12 +290,6 @@
                 </div>
 
             
-                
-                    
-              
-
-
-
             </div>
         </div>
     </div>
@@ -326,7 +320,7 @@
             success: function (response) {                
                 if(response.status == 200){
                     $('#select2Periodos').empty();                    
-                    $('#select2Periodos').append('<option value="">Seleccionar periodo</option>');                    
+                    $('#select2Periodos').append('<option value="" selected disabled>Seleccionar periodo</option>');                    
                     $.each(response.message, function(index, p) {
                         $('#select2Periodos').append('<option value="' + p.n_codper + '">' + p.n_codper + '</option>');
                     });
@@ -360,7 +354,7 @@
                         GS.finSolicitud();
                         if (response.status == 200) {
                             $('#select2Facultades').empty();
-                            $('#select2Facultades').append('<option value="">Seleccionar facultad</option>');
+                            $('#select2Facultades').append('<option value="" selected disabled>Seleccionar facultad</option>');
                             $.each(response.message, function(index, f) {
                                 $('#select2Facultades').append('<option value="' + f.c_codfac + '">' + f.facultad + '</option>');
                             });
@@ -397,7 +391,7 @@
                         GS.finSolicitud();
                         if (response.status == 200) {
                             $('#select2Programas').empty();
-                            $('#select2Programas').append('<option value="">Seleccionar programa</option>');
+                            $('#select2Programas').append('<option value="" selected disabled>Seleccionar programa</option>');
                             $.each(response.message, function(index, p) {
                                 $('#select2Programas').append('<option value="' + p.c_codesp + '">' + p.prog_academico + '</option>');
                             });
@@ -434,7 +428,7 @@
                         GS.finSolicitud();
                         if (response.status == 200) {
                             $('#select2Cursos').empty();
-                            $('#select2Cursos').append('<option value="">Seleccionar curso</option>');
+                            $('#select2Cursos').append('<option value="" selected disabled>Seleccionar curso</option>');
                             $.each(response.message, function(index, c) {
                                 $('#select2Cursos').append('<option value="' + c.c_codcur + '" data-nombre="' + c.nom_curso_seccion + '">' + c.nom_curso_seccion + '</option>');
                             });
@@ -459,7 +453,7 @@
             var c_grpcur = $('#select2Cursos option:selected').text().split(' - ')[1];
             
             // LIMPIAR SELECT DEPENDIENTE
-            $('#select2Docentes').empty().append('<option value="">Seleccionar docente</option>');
+             $('#select2Docentes').empty().append('<option value="" selected disabled>Seleccionar docente</option>');        
             
             if (n_codper && c_codfac && c_codesp && c_codcur && c_grpcur) {
                 GS.inicioSolicitud();
@@ -477,7 +471,7 @@
                         GS.finSolicitud();
                         if (response.status == 200) {
                             $('#select2Docentes').empty();
-                            $('#select2Docentes').append('<option value="">Seleccionar docente</option>');
+                            $('#select2Docentes').append('<option value="" selected disabled>Seleccionar docente</option>');
                             $.each(response.message, function(index, d) {
                                 $('#select2Docentes').append('<option value="' + d.c_dnidoc + '" data-nombre="' + d.nombres + '">' + d.nombres + '</option>');
                             });
@@ -492,10 +486,210 @@
                 });
             }
         });
+
+
+        $('#btnCalcularNota').click(function (){
+            const criterios = [
+                'inicio1', 'inicio2', 'inicio3',
+                'desarrollo1', 'desarrollo2', 'desarrollo3', 'desarrollo4',
+                'cierre1', 'cierre2', 'cierre3',
+                'otros'
+            ];
+            let totalPuntaje = 0;
+            let todosCriterios = true;
+
+            criterios.forEach(element => {
+                if($('input[name="' + element + '"]:checked').length > 0){
+                    totalPuntaje += parseFloat($('input[name="' + element + '"]:checked').val());
+                } else {
+                    todosCriterios = false;                  
+                }
+                
+            });
+
+            if(!todosCriterios){
+                GS.modalAdvertencia('Por favor, complete la evaluación seleccionando una opción para cada criterio.');
+                return;
+            }else{
+                let resultadoPromedio = (totalPuntaje / 11).toFixed(2);
+                let resultado = '';
+                if(totalPuntaje <= 10){
+                    resultado = 'Deficiente';
+                }else if (totalPuntaje <= 13){
+                    resultado = 'Regular';
+                }else if (totalPuntaje <= 16){
+                    resultado = 'Bueno';
+                }else if (totalPuntaje <= 19){
+                    resultado = 'Muy Bueno';
+                }else if (totalPuntaje >=20){
+                    resultado = 'Excelente';
+                    totalPuntaje = 20;
+                }
+                $('#resultadoObservacion').val(resultado);
+                $('#puntajeObtenido').val(totalPuntaje);
+
+            }
+
         });
 
 
+        $('#btnRegistrarEvaluacion').click(function() {
+            // VALIDACIONES FRONTEND
+            var errores = [];
+            
+            // Validar datos académicos
+            if (!$('#select2Periodos').val()) errores.push('Debe seleccionar un periodo');
+            if (!$('#select2Facultades').val()) errores.push('Debe seleccionar una facultad');
+            if (!$('#select2Programas').val()) errores.push('Debe seleccionar un programa académico');
+            if (!$('#select2Cursos').val()) errores.push('Debe seleccionar un curso');
+            if (!$('#select2Docentes').val()) errores.push('Debe seleccionar un docente');
+            
+            // Validar datos de sesión
+            if (!$('#select2Semana').val()) errores.push('Debe seleccionar una semana');
+            if (!$('#temaSesion').val().trim()) errores.push('Debe ingresar el tema de la sesión');
+            
+            // Validar que se haya calculado la nota
+            if (!$('#puntajeObtenido').val()) errores.push('Debe calcular la nota antes de registrar');
+                        
+            // Mostrar errores si existen
+            if (errores.length > 0) {
+                GS.modalAdvertencia('Por favor completar todos los campos requeridos.');
+                return;
+            }
+            
+            // Confirmación antes de guardar
+            GS.modalConfirmacion(
+                '¿Confirmar registro?',
+                'Se registrará la evaluación docente. Esta acción no se puede revertir.',
+                function() {
+                    // Preparar datos para envío
+                    var formData = {
+                        periodo: $('#select2Periodos').val(),
+                        facultad: $('#select2Facultades').val(),
+                        programa_academico: $('#select2Programas').val(),
+                        curso_codigo: $('#select2Cursos').val(),
+                        curso_nombre: $('#select2Cursos option:selected').data('nombre'),
+                        docente_dni: $('#select2Docentes').val(),
+                        docente_nombre: $('#select2Docentes option:selected').data('nombre'),
+                        semana: $('#select2Semana').val(),
+                        tema: $('#temaSesion').val().trim(),
+                        inicio1: $('input[name="inicio1"]:checked').val() || null,
+                        inicio2: $('input[name="inicio2"]:checked').val() || null,
+                        inicio3: $('input[name="inicio3"]:checked').val() || null,
+                        desarrollo1: $('input[name="desarrollo1"]:checked').val() || null,
+                        desarrollo2: $('input[name="desarrollo2"]:checked').val() || null,
+                        desarrollo3: $('input[name="desarrollo3"]:checked').val() || null,
+                        desarrollo4: $('input[name="desarrollo4"]:checked').val() || null,
+                        cierre1: $('input[name="cierre1"]:checked').val() || null,
+                        cierre2: $('input[name="cierre2"]:checked').val() || null,
+                        cierre3: $('input[name="cierre3"]:checked').val() || null,
+                        otros: $('input[name="otros"]:checked').val() || null,
+                        total: $('#puntajeObtenido').val(),
+                        plan_mejora: $('#planMejora').summernote('code').trim() || null
+                    };
+                    
+                    GS.inicioSolicitud();
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('docente.evaluacion.registrar-evaluacion') }}",
+                        data: formData,
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            GS.finSolicitud();
+                            if (response.status === 200) {
+                                GS.modalCorrecto(response.message);
+                                // Opcional: Limpiar formulario o redirigir
+                                // location.reload();
+                            } else {
+                                GS.modalAdvertencia(response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            GS.finSolicitud();
+                            let mensaje = 'Error al registrar la evaluación';
+                            
+                            if (xhr.responseJSON && xhr.responseJSON.message) {
+                                mensaje = xhr.responseJSON.message;
+                            } else if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+                                let erroresBackend = [];
+                                for (let campo in xhr.responseJSON.errors) {
+                                    erroresBackend.push(xhr.responseJSON.errors[campo].join(', '));
+                                }
+                                mensaje = 'Errores de validación:\\n• ' + erroresBackend.join('\\n• ');
+                            }
+                            
+                            GS.modalError(mensaje);
+                        }
+                    });
+                }
+            );
+        });
 
+
+        $('#btnExportarPDF').click(function() {
+            // VALIDACIONES FRONTEND
+            var errores = [];
+            
+            // Validar datos académicos
+            if (!$('#select2Periodos').val()) errores.push('Debe seleccionar un periodo');
+            if (!$('#select2Facultades').val()) errores.push('Debe seleccionar una facultad');
+            if (!$('#select2Programas').val()) errores.push('Debe seleccionar un programa académico');
+            if (!$('#select2Cursos').val()) errores.push('Debe seleccionar un curso');
+            if (!$('#select2Docentes').val()) errores.push('Debe seleccionar un docente');
+            
+            // Validar datos de sesión
+            if (!$('#select2Semana').val()) errores.push('Debe seleccionar una semana');
+            if (!$('#temaSesion').val().trim()) errores.push('Debe ingresar el tema de la sesión');
+            
+            // Validar que se haya calculado la nota
+            if (!$('#puntajeObtenido').val()) errores.push('Debe calcular la nota antes de exportar el PDF');
+                        
+            // Mostrar errores si existen
+            if (errores.length > 0) {
+                GS.modalAdvertencia('Por favor completar todos los campos requeridos.');
+                return;
+            }
+            
+            // Preparar datos para envío
+            var formData = {
+                periodo: $('#select2Periodos').val(),
+                facultad: $('#select2Facultades').val(),
+                programa_academico: $('#select2Programas').val(),
+                curso_codigo: $('#select2Cursos').val(),
+                docente_dni: $('#select2Docentes').val(),
+                semana: $('#select2Semana').val()
+            };
+
+
+            GS.inicioSolicitud();
+            $.ajax({
+                url: '{{ route("docente.evaluacion.pdf") }}',
+                type: 'POST',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    GS.finSolicitud();
+                    if (response.status === 200) {
+                        GS.modalCorrecto(response.message);
+                        var blob = GS.b64toBlob(response.data.pdf, 'application/pdf');
+                        var blobUrl = URL.createObjectURL(blob);
+                        window.open(blobUrl);                        
+                    } else {
+                        GS.modalAdvertencia(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    GS.finSolicitud();  
+                    GS.modalError('Error al generar el PDF');
+                }
+            });
+        });
+    });
 
 
 

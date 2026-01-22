@@ -38,21 +38,7 @@ class Util
         $meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'];
         return $meses[$mes-1];
     }
-
-    static function base64Img($rutaImagen){
-        $contenidoImagen = Storage::get($rutaImagen);
-        $base64Imagen = base64_encode($contenidoImagen);
-        echo $base64Imagen;
-    }
-
-    static function prueba1(){
-        return 'hola';
-    }
-
-   
-
-    
-
+ 
 
     static function facultadNombresReales($codigoFacultad)
     {
@@ -66,5 +52,38 @@ class Util
 
         return $Nombrefacultades[$codigoFacultad] ?? 'Código no encontrado';
     }
+
+
+    static function base64Img($rutaImagen){
+        $contenidoImagen = Storage::get($rutaImagen);
+        $base64Imagen = base64_encode($contenidoImagen);
+        echo $base64Imagen;
+    }
+
+    static function base64ImgRelativo($rutaImagen){
+        $contenidoImagen =file_get_contents( public_path('/assets/images/logo-uma.png'));
+        $base64Imagen = base64_encode($contenidoImagen);
+        echo $base64Imagen;
+    }
+
+    static function formatoPeriodo($semestre) {        
+        $anio = substr($semestre, 0, 4);
+        $numeroSemestre = substr($semestre, 4);
+
+        $mapa = ['I', 'II', 'III', 'IV'];
+
+        if (intval($numeroSemestre) >= 1 && intval($numeroSemestre) <= 4) {
+            return $anio . '-' . $mapa[intval($numeroSemestre) - 1];
+        }
+
+        return $anio . '-' . $numeroSemestre;
+    }
+
+
+    
+
+
+
+
 
 }

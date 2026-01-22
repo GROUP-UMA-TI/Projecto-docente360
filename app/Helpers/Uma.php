@@ -148,5 +148,22 @@ class Uma  {
         return $datos[$area] ?? 'Código no encontrado';
     }
 
+    static function puntajeDocente($nota)
+    {
+        if ($nota <= 10) {
+           return  'Deficiente';
+        } else if ($nota <= 13) {
+            return 'Regular';
+        } else if ( $nota <= 16) {
+            return 'Bueno';
+        } else if ( $nota <= 19) {
+            return 'Muy Bueno';
+        } else if ($nota >= 20) {
+            return 'Excelente';
+        }
+
+        return 'Bueno';
+    }
+
     
 }

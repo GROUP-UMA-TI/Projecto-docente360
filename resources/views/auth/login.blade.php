@@ -33,10 +33,10 @@
                     <div class="card p-4">                       
                         <div class="auth-brand text-center mb-4">
                             <a href="index.html" class="logo-dark">
-                                <img src="/assets/images/logo-uma-.png" alt="dark logo" height="80">
+                                <img src="/assets/images/logo-uma.png" alt="dark logo" height="80">
                             </a>
                             <a href="index.html" class="logo-light">
-                                <img src="assets/images/logo-uma-.png" alt="logo" height="28">
+                                <img src="assets/images/logo-uma.png" alt="logo" height="28">
                             </a>
                         </div>
                         <form action="{{route('login')}}" method="post">

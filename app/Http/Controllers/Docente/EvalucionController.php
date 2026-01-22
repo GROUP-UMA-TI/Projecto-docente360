@@ -6,10 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
 use App\Helpers\Service;
+use App\Helpers\Uma;
+use App\Helpers\Util;
+use App\Models\GestionDocente\Evaluacion;
 use Illuminate\Support\Facades\DB;
+use App\Traits\Documentos\PdfDocumentTrait;
+use Illuminate\Support\Facades\Auth;
 
 class EvalucionController extends Controller
 {
+    use PdfDocumentTrait;
+
     public function vistaEvalucion()
     {
         return view('docente.evaluacion');
@@ -115,6 +122,81 @@ class EvalucionController extends Controller
 
     }
 
+    public function registrarEvaluacion(Request $request)
+    {
+        $data = $request->validate([
+            'periodo'             => 'required|string|max:255',
+            'facultad'            => 'required|string|max:255',
+            'programa_academico'  => 'required|string|max:255',
+            'curso_codigo'        => 'required|string|max:255',
+            'curso_nombre'        => 'required|string|max:255',
+            'docente_dni'         => 'required|string|max:255',
+            'docente_nombre'      => 'required|string|max:255',
+            'semana'              => 'required|string|max:255',
+            'tema'                => 'required|string|max:255',
+            'inicio1'             => 'nullable',
+            'inicio2'             => 'nullable',
+            'inicio3'             => 'nullable',
+            'desarrollo1'         => 'nullable',
+            'desarrollo2'         => 'nullable',
+            'desarrollo3'         => 'nullable',
+            'desarrollo4'         => 'nullable',
+            'cierre1'             => 'nullable',
+            'cierre2'             => 'nullable',
+            'cierre3'             => 'nullable',
+            'otros'               => 'nullable',
+            'total'               => 'nullable|numeric',
+            'plan_mejora'         => 'nullable|string',
+        ]);
+
+        $existe = Evaluacion::where([
+            'periodo'            => $data['periodo'],
+            'facultad'           => $data['facultad'],
+            'programa_academico' => $data['programa_academico'],
+            'curso_codigo'       => $data['curso_codigo'],
+            'docente_dni'        => $data['docente_dni'],
+            'semana'             => $data['semana'],
+        ])->exists();
+
+        if ($existe) {
+            return response()->json(
+                Service::responseError('Ya existe un registro para esta evaluación.')
+            );
+        }
+
+        $data['evaluador'] = trim(
+            Auth::user()->grado . ' ' . Auth::user()->name . ' ' . Auth::user()->lastname
+        );
+
+        $data['firma'] = Auth::user()->firma;
+
+        Evaluacion::create($data);
+
+        return response()->json(
+            Service::responseSuccess('Evaluación registrada correctamente.')
+        );
+    }
+
+    public function pdfDocenteEvaluacion(Request $request)
+    {
+        $evaluacion = Evaluacion::where('periodo', $request->periodo)
+            ->where('facultad', $request->facultad)
+            ->where('programa_academico', $request->programa_academico)
+            ->where('curso_codigo', $request->curso_codigo)
+            ->where('docente_dni', $request->docente_dni)
+            ->where('semana', $request->semana)
+            ->first();
+
+        if (!$evaluacion) {
+            return response()->json(Service::responseError('Evaluación no encontrada.'));
+        }
+        $datos = [
+            'docente_evaluacion' => $evaluacion,
+        ];
+
+        $pdfData = $this->createPdfBase64Horizontal($datos, 'pdf.docente.registro-evaluacion', 'evaluacion-'.$evaluacion->docente_dni.'-'.$evaluacion->semana.'.pdf');
+        return response()->json(Service::responseSuccess('Se generó el PDF correctamente.', $pdfData));
+    }
 
 
 

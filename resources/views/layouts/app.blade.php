@@ -68,12 +68,12 @@
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="logo">
                 <span class="logo logo-light">
-                    <span class="logo-lg"><img src="/assets/images/logo-uma-.png" alt="logo" style="height:70px;"></span>
+                    <span class="logo-lg"><img src="/assets/images/logo-uma.png" alt="logo" style="height:70px;"></span>
                     <span class="logo-sm"><img src="/assets/images/logo-sm.png" alt="small logo"></span>
                 </span>
 
                 <span class="logo logo-dark">
-                    <span class="logo-lg"><img src="/assets/images/logo-uma-.png" alt="logo" style="height:70px;"></span>
+                    <span class="logo-lg"><img src="/assets/images/logo-uma.png" alt="logo" style="height:70px;"></span>
                     <span class="logo-sm"><img src="/assets/images/logo-sm.png" alt="small logo"></span>
                 </span>
             </a>
@@ -167,7 +167,7 @@
                         <!-- Logo light -->
                         <a href="{{ route('home') }}" class="logo-light">
                             <span class="logo-lg">
-                                <img src="/assets/images/logo-uma-.png" alt="logo">
+                                <img src="/assets/images/logo-uma.png" alt="logo">
                             </span>
                             <span class="logo-sm">
                                 <img src="/assets/images/logo-sm.png" alt="small logo">
@@ -177,7 +177,7 @@
                         <!-- Logo Dark -->
                         <a href="{{ route('home') }}" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="/assets/images/logo-uma-.png" alt="dark logo">
+                                <img src="/assets/images/logo-uma.png" alt="dark logo">
                             </span>
                             <span class="logo-sm">
                                 <img src="/assets/images/logo-sm.png" alt="small logo">
