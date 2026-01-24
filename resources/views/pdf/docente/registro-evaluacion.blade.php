@@ -478,8 +478,7 @@
 
 <!-- PÁGINA 3 - PLAN DE MEJORA -->
 <div class="page-break">
-    <h1 class="titulo-general">Plan de Mejora y Firma</h1>
-    
+        
     <div class="plan-de-mejora">
         <h3>PLAN DE MEJORA:</h3>
         <p>{!! $docente_evaluacion->plan_mejora !!}</p>
