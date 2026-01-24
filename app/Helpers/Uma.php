@@ -41,7 +41,7 @@ class Uma  {
         return $datos[$area];
     }
 
-    static function nombreCarreras($area)
+    static function programasAcademicos($area)
     {
         $datos = [
             // Escuelas Profesionales (S-prefijo)
@@ -101,52 +101,7 @@ class Uma  {
         return $users;
     }
 
-    static function areasNombres($area)
-    {
-        $datos = [
-            // Escuela Profesional (S-prefijo)
-            'S1' => 'Enfermería',
-            'S2' => 'Farmacia y Bioquímica',
-            'S3' => 'Nutrición y Dietética',
-            'S4' => 'Psicología',
-            'S5' => 'Tecnología Médica en Terapia Física y Rehabilitación',
-            'S6' => 'Tecnología Médica en Laboratorio Clínico y Anatomía Patológica',
-            'S7' => 'Medicina',
-
-            // Escuela Profesional (E-prefijo)
-            'E1' => 'Administración de Negocios Internacionales',
-            'E2' => 'Administración y Marketing',
-            'E3' => 'Contabilidad y Finanzas',
-            'E4' => 'Administración y Negocios Internacionales',
-            'E5' => 'Ingeniería Industrial',
-            'E6' => 'Ingeniería de Inteligencia Artificial',
-            'E7' => 'Ingeniería de Sistemas',
-            'E8' => 'Administración de Empresas',
-            'E9' => 'Derecho',
-
-            // Segunda Especialidad Profesional (E-prefijo, excepto E1-E9 ya usados)
-            'EC' => 'Segunda Especialidad Profesional en Enfermería en Cuidado Integral Infantil con Mención en Crecimiento y Desarrollo',
-            'ED' => 'Segunda Especialidad Profesional en Enfermería en Emergencias y Desastres',
-            'EI' => 'Segunda Especialidad Profesional en Enfermería en Cuidados Intensivos',
-            'EO' => 'Segunda Especialidad Profesional en Enfermería en Salud Ocupacional',
-            'EQ' => 'Segunda Especialidad Profesional en Enfermería en Centro Quirúrgico',
-            'ES' => 'Segunda Especialidad Profesional en Enfermería en Salud Familiar y Comunitaria',
-            'EU' => 'Segunda Especialidad Profesional en Enfermería en Urología',
-            'F1' => 'Segunda Especialidad Profesional en Asuntos Regulatorios en el Sector Farmacéutico',
-            'P1' => 'Segunda Especialidad Profesional en Psicología Clínica',
-
-            // Programas de Posgrado
-            'AS' => 'Diplomado en Asuntos Regulatorios del Sector Farmacéutico',
-            'DA' => 'Diplomado Internacional en Gestión de Negocios Globales',
-            'DC' => 'Diplomado Internacional en Gestión Contable y Financiera',
-            'DM' => 'Diplomado Internacional en Gestión de Marketing Estratégico',
-            'DT' => 'Diplomado Internacional de Especialización de Toxicología Ambiental y Seguridad',
-            'MA' => 'Maestría en Administración de Empresas',
-            'MS' => 'Maestría en Salud Pública',
-        ];
-
-        return $datos[$area] ?? 'Código no encontrado';
-    }
+    
 
     static function puntajeDocente($nota)
     {

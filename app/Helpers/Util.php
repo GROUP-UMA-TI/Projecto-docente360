@@ -40,7 +40,7 @@ class Util
     }
  
 
-    static function facultadNombresReales($codigoFacultad)
+    static function nombreFacultades($codigoFacultad)
     {
         $Nombrefacultades = [
             'D' => 'DIPLOMADOS',

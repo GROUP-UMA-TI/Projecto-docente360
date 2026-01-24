@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/docente/evaluacion/cursos-docentes', 'cursosDocentes')->name('docente.evaluacion.cursos-docentes');
         Route::post('/docente/evaluacion/registrar-evaluacion', 'registrarEvaluacion')->name('docente.evaluacion.registrar-evaluacion');
         Route::post('/docente/evaluacion/pdf', 'pdfDocenteEvaluacion')->name('docente.evaluacion.pdf');
+        Route::get('/docente/evaluacion/historial', 'listaHistorialEvaluacion')->name('docente.evaluacion.historial');
 
 
         Route::get('/docente/historial-evaluacion', 'historialEvaluacion')->name('docente.historial-evaluacion');

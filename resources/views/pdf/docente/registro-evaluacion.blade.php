@@ -188,13 +188,13 @@
     </tr>
     <tr>
         <td>Facultad:</td>
-        <td>{{Util::facultadNombresReales($docente_evaluacion->facultad)}}</td>
+        <td>{{Util::nombreFacultades($docente_evaluacion->facultad)}}</td>
         <td>Resultado:</td>
         <td>{{Uma::puntajeDocente($docente_evaluacion->total)}}</td>
     </tr>
     <tr>
         <td>Escuela:</td>
-        <td>{{Uma::areasNombres($docente_evaluacion->programa_academico)}}</td>
+        <td>{{Uma::programasAcademicos($docente_evaluacion->programa_academico)}}</td>
         <td>Puntaje obtenido:</td>
         <td>{{$docente_evaluacion->total}}</td>
     </tr>

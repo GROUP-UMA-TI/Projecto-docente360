@@ -177,33 +177,55 @@ class EvalucionController extends Controller
         );
     }
 
+    public function historialEvaluacion()
+    {
+        return view('docente.historial-evaluacion');
+    }
+
+    public function listaHistorialEvaluacion()
+    {        
+        $listaDocente = Evaluacion::get();
+        $listaDocente->transform(function ($item) {
+            return [
+                'periodo'             => Util::formatoPeriodo($item->periodo),
+                'facultad'            => Util::nombreFacultades($item->facultad),
+                'programa_academico'  => Uma::programasAcademicos($item->programa_academico),
+                'docente_nombre'      => $item->docente_nombre,
+                'curso_nombre'        => $item->curso_nombre,
+                'btn_acciones'        => '<button class="btn btn-sm btn-primary btn-DescargarPdf" data-id="'.$item->id.'" title="Descargar PDF"><i class="ti ti-download"></i></button>',
+            ];
+        });
+        
+        return response()->json([
+            'data' => $listaDocente
+        ]);
+    }
+
     public function pdfDocenteEvaluacion(Request $request)
     {
-        $evaluacion = Evaluacion::where('periodo', $request->periodo)
-            ->where('facultad', $request->facultad)
-            ->where('programa_academico', $request->programa_academico)
-            ->where('curso_codigo', $request->curso_codigo)
-            ->where('docente_dni', $request->docente_dni)
-            ->where('semana', $request->semana)
-            ->first();
+        
+        if ($request->has('id')) {
+            $evaluacion = Evaluacion::find($request->id);
+        } else {
+            $evaluacion = Evaluacion::where('periodo', $request->periodo)
+                ->where('facultad', $request->facultad)
+                ->where('programa_academico', $request->programa_academico)
+                ->where('curso_codigo', $request->curso_codigo)
+                ->where('docente_dni', $request->docente_dni)
+                ->where('semana', $request->semana)
+                ->first();
+        }
 
         if (!$evaluacion) {
             return response()->json(Service::responseError('Evaluación no encontrada.'));
         }
+        
         $datos = [
             'docente_evaluacion' => $evaluacion,
         ];
 
         $pdfData = $this->createPdfBase64Horizontal($datos, 'pdf.docente.registro-evaluacion', 'evaluacion-'.$evaluacion->docente_dni.'-'.$evaluacion->semana.'.pdf');
         return response()->json(Service::responseSuccess('Se generó el PDF correctamente.', $pdfData));
-    }
-
-
-
-
-    public function historialEvaluacion()
-    {
-        return view('docente.historial-evaluacion');
     }
 
 
