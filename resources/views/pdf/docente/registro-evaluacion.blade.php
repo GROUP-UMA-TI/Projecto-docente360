@@ -121,8 +121,6 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-
-
     
         .plan-de-mejora {
             margin-top: 40px;
@@ -168,8 +166,6 @@
             border-top: 2px solid #2c3e50;
             margin-bottom: 6px;
         }
-
-
 
     </style>
 </head>
