@@ -177,7 +177,7 @@ class EvalucionController extends Controller
         );
     }
 
-    public function historialEvaluacion()
+    public function vistaHistorialEvaluacion()
     {
         return view('docente.historial-evaluacion');
     }

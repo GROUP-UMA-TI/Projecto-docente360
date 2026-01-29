@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sign In | UBold - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title>Login - Plataforma de Gestión y Evaluación Educativa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Projecto-docente360 es una plataforma integral para la gestión educativa que permite la observación, evaluación y seguimiento de docentes, control de asistencia, encuestas de satisfacción, y generación de reportes detallados para una administración eficiente y completa del desempeño académico." />
     <meta name="keywords" content="gestión educativa, evaluación docente, seguimiento docente, observación de clases, control de asistencia, encuestas educativas, reportes académicos, desempeño docente, plataforma educativa, sistema de gestión escolar, administración educativa, educación digital">
@@ -71,7 +71,7 @@
                     </div>
     
                     <p class="text-center text-muted mt-4 mb-0">
-                        © <script>document.write(new Date().getFullYear())</script> Desarrollado con <i class="ti ti-heart"></i> por<span class="fw-semibold"> Developers UMA</span>
+                        © <script>document.write(new Date().getFullYear())</script> Desarrollado con <i data-lucide="heart-handshake" class="text-primary fill-primary"></i>  por<span class="fw-semibold"> Developers UMA</span>
                     </p>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Docente\EvalucionController;
+use App\Http\Controllers\Director\EvaluacionDirectorController;
 
 
 Route::get('/', function () {
@@ -42,8 +43,26 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/docente/evaluacion/historial', 'listaHistorialEvaluacion')->name('docente.evaluacion.historial');
 
 
-        Route::get('/docente/historial-evaluacion', 'historialEvaluacion')->name('docente.historial-evaluacion');
+        Route::get('/docente/historial-evaluacion', 'vistaHistorialEvaluacion')->name('docente.vista.historial-evaluacion');
     });
+
+
+    Route::prefix('director/evaluacion')
+        ->name('director.evaluacion.')
+        ->controller(EvaluacionDirectorController::class)
+        ->group(function () {
+
+            Route::get('/', 'vistaDirectorEvaluacion')->name('index');
+            Route::get('lista-docente-codesp', 'listaDocenteC_codesp')->name('lista-docente-codesp');
+            Route::post('registrar', 'registrarEvaluacion')->name('registrar');
+        });
+
+        
+
+
+
+
+
 });
 
 
