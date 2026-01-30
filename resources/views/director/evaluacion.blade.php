@@ -207,7 +207,7 @@
 
                             <!-- PLAN DE MEJORA -->
                             <tr>
-                                <td colspan="6">
+                                <td colspan="8">
                                 <p><strong>PLAN DE MEJORA:</strong> </p>
                                     <div class="summernote" id="planMejora">
 
