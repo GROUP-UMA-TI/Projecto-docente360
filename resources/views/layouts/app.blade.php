@@ -146,12 +146,12 @@
                         <div class="collapse" id="sidebarCRM">
                             <ul class="sub-menu">
                                 <li class="side-nav-item">
-                                    <a href="{{ route('docente.evaluacion') }}" class="side-nav-link">
+                                    <a href="{{ route('docente.evaluacion.index') }}" class="side-nav-link">
                                         <span class="menu-text" data-lang="crm-contacts">Evaluación Docente</span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="{{ route('docente.vista.historial-evaluacion') }}" class="side-nav-link">
+                                    <a href="{{ route('docente.evaluacion.historial') }}" class="side-nav-link">
                                         <span class="menu-text" data-lang="crm-opportunities">Historial de Evaluaciones</span>
                                     </a>
                                 </li>

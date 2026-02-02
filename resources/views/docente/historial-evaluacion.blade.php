@@ -61,7 +61,7 @@ $(function () {
                 previous: '<i class="ti ti-chevron-left"></i>'
             }
         },
-        ajax: "{{ route('docente.evaluacion.historial') }}",
+        ajax: "{{ route('docente.evaluacion.historial.lista') }}",
         columns: [
             {data: 'periodo'},
             {data: 'facultad'},
