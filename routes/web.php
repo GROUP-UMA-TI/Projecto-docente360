@@ -12,10 +12,11 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
+    
     Route::controller(UserController::class)->group(function () {
         Route::prefix('admin')->group(function () {
             Route::prefix('usuarios')->group(function () {
-                Route::get('/', 'index')->name('admin.usuarios');
+                Route::get('/', 'index')->name('admin.usuarios')->middleware('permission:1.1.1');
                 Route::get('/lista', 'serviceListaUsuarios')->name('admin.usuarios.lista');
                 Route::post('/get', 'serviceGetUsuario')->name('admin.usuarios.get-usuario');
                 Route::post('/crear-editar', 'crear_editarUsuario')->name('admin.usuarios.crear-editar');

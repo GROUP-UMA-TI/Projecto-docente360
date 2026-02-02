@@ -29,4 +29,6 @@ class AdminMiddleware
             return redirect()->route('home');
         }
     }
+
+    
 }
