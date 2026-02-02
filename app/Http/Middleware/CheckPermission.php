@@ -76,10 +76,10 @@ class CheckPermission
 
     private function issetPermission($user, $routeName)
     {
-    return $user->permissions()
-            ->where('estado', 'A')
-            ->whereHas('item', function($query) use ($routeName) {
-                $query->where('codigo', $routeName);
+        return $user->permissions()
+        ->where('estado', 'A')
+        ->whereHas('item', function($query) use ($routeName) {
+            $query->where('codigo', $routeName);
             })
             ->exists();
     }
