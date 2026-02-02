@@ -8,10 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use App\Models\Director\EvaluacionDirector;
+use App\Traits\Documentos\PdfDocumentTrait;
+use App\Helpers\Uma;
+use App\Helpers\Util;
 use Illuminate\Support\Facades\Auth;
 
 class EvaluacionDirectorController extends Controller
 {
+    use PdfDocumentTrait;
+
     public function vistaDirectorEvaluacion()
     {
         return view('director.evaluacion');
@@ -145,8 +150,70 @@ class EvaluacionDirectorController extends Controller
 
     }
 
+    public function pdfEvaluacion(Request $request)
+    {
+        if($request->has('id')){
+            $evaluacion = EvaluacionDirector::find($request->id);     
+        }else{
+            $evaluacion = EvaluacionDirector::where([
+                'periodo' => $request->periodo,
+                'facultad' => $request->facultad,
+                'programa_academico' => $request->programa_academico,
+                'docente_dni' => $request->docente_dni,
+            ])->first();
+        }
 
-        
+        if (!$evaluacion) {
+            return response()->json(Service::responseError('No se encontró la evaluación.'));
+        } else {
+            $datos = [
+                'evaluacion' => $evaluacion
+            ];
+            $pdfData = $this->createPdfBase64Horizontal( $datos, 'pdf.director.evaluacion', $evaluacion->docente_dni . '.pdf' );
+            return response()->json(Service::responseSuccess('PDF generado correctamente.', $pdfData));
+
+        }
+    }
+
+    public function vistaHistorialEvaluacion()
+    {
+        return view('director.historial-evaluacion');
+    }
+
+    public function listaHistorialEvaluacion()
+    {
+        try {
+            $evaluaciones = EvaluacionDirector::select([
+                'id',
+                'periodo',
+                'facultad', 
+                'programa_academico',
+                'nombre_docente'
+            ])->get();
+
+            $data = $evaluaciones->map(function ($item) {
+                return [
+                    'periodo'             => Util::formatoPeriodo($item->periodo),
+                    'facultad'            => Util::capitalizeWords(Util::nombreFacultades($item->facultad)),
+                    'programa_academico'  => Uma::programasAcademicos($item->programa_academico),
+                    'nombre_docente'      => Util::capitalizeWords($item->nombre_docente),
+                    'btn_acciones'        => '<button class="btn btn-sm btn-primary btn-DescargarPdf" data-id="' . $item->id . '" title="Descargar PDF"><i class="ti ti-download"></i></button>',
+                ];
+            });
+
+            return response()->json(['data' => $data]);
+
+        } catch (Exception $e) {
+            return response()->json(Service::responseError('Error al obtener el historial de evaluaciones.'));
+        }
+    }
+
+    
 
 
-}
+
+
+
+
+
+  }

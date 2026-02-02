@@ -22,7 +22,7 @@ return new class extends Migration
             $table->tinyInteger('evaluacion')->unsigned();
             $table->tinyInteger('innovacion')->unsigned();
             $table->tinyInteger('responsabilidad')->unsigned();
-            $table->string('plan_mejora')->nullable();
+            $table->text('plan_mejora')->nullable();
             $table->tinyInteger('total')->unsigned();
             $table->string('evaluador');
             $table->string('firma')->nullable();

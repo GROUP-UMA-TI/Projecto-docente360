@@ -79,6 +79,19 @@ class Util
         return $anio . '-' . $numeroSemestre;
     }
 
+    public static function capitalizeWords($string)
+    {
+        $words = mb_split('\s', $string);
+        $capitalizedWords = array_map(function($word) {
+            if (mb_strlen($word) > 3) {
+                return mb_convert_case($word, MB_CASE_TITLE, "UTF-8");
+            }
+            return mb_strtolower($word, "UTF-8");
+        }, $words);
+
+        return implode(' ', $capitalizedWords);
+    }
+
 
     
 

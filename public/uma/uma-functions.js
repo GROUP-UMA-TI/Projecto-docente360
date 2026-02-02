@@ -101,7 +101,7 @@ const GS = {
         );
     },
     
-    b64toBlob: function(b64Data, contentType='', sliceSize=512) {
+    base64ToBlob: function(b64Data, contentType='', sliceSize=512) {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
 

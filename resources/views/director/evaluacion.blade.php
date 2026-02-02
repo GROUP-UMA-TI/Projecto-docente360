@@ -485,11 +485,67 @@
         });
 
 
+        $('#btnExportarPDF').click(function() {
+
+            let errores = [];
+
+            if (!$('#select2Periodos').val()) {
+                errores.push('Seleccione un periodo académico.');
+            }
+
+            if (!$('#select2Programas').val()) {
+                errores.push('Seleccione un programa académico.');
+            }
+
+            if (!$('#select2Facultades').val()) {
+                errores.push('Seleccione una facultad.');
+            }
+
+            if (!$('#select2Docentes').val()) {
+                errores.push('Seleccione un docente.');
+            }
+
+            if (errores.length > 0) {
+                GS.modalAdvertencia("Debe completar todos los campos requeridos.");
+                return;
+            }
+            
+            var formData = {
+                periodo: $('#select2Periodos').val(),
+                facultad: $('#select2Facultades').val(),
+                programa_academico: $('#select2Programas').val(),
+                docente_dni: $('#select2Docentes').val()
+            };
+
+            GS.inicioSolicitud();
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('director.evaluacion.pdf') }}",
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    GS.finSolicitud();
+                    if (response.status == 200) {                        
+                        var blob = GS.base64ToBlob(response.data.pdf, 'application/pdf');
+                        var blobUrl = URL.createObjectURL(blob);
+                        window.open(blobUrl, '_blank');
+                    } else {
+                        GS.modalError(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    GS.finSolicitud();
+                    GS.modalError('Error en la solicitud AJAX', error);
+                }
+            });
+
+        });
 
 
 
-
-        
     });
 
 

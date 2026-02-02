@@ -55,6 +55,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', 'vistaDirectorEvaluacion')->name('index');
             Route::get('lista-docente-codesp', 'listaDocenteC_codesp')->name('lista-docente-codesp');
             Route::post('registrar', 'registrarEvaluacion')->name('registrar');
+            Route::post('pdf', 'pdfEvaluacion')->name('pdf');
+            Route::get('historial', 'vistaHistorialEvaluacion')->name('historial');
+            Route::get('historial/lista', 'listaHistorialEvaluacion')->name('historial.lista');
         });
 
         

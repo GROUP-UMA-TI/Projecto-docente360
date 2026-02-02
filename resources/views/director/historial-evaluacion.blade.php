@@ -8,11 +8,7 @@
                                 <h4 class="card-title"> HISTORIAL DE EVALUACIÓN </h4>
                             </div>
 
-                            <div class="card-body">
-                                <p class="text-muted">
-                                    Reportes <code> masivos</code> generados para la evaluación docente.
-                                </p>
-
+                            <div class="card-body">                             
                                 <div class="table-responsive">
                                     <table class="table table-striped" style="width:100%" data-table="historial-evaluacion">
                                         <thead class="align-middle thead-sm">
@@ -21,7 +17,6 @@
                                                 <th>Facultad</th>
                                                 <th>Programa Académico</th>
                                                 <th>Docente</th>
-                                                <th>Curso</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -61,13 +56,12 @@ $(function () {
                 previous: '<i class="ti ti-chevron-left"></i>'
             }
         },
-        ajax: "{{ route('docente.evaluacion.historial') }}",
+        ajax: "{{ route('director.evaluacion.historial.lista') }}",
         columns: [
             {data: 'periodo'},
             {data: 'facultad'},
             {data: 'programa_academico'},
-            {data: 'docente_nombre'},
-            {data: 'curso_nombre'},
+            {data: 'nombre_docente'},
             {data: 'btn_acciones', orderable: false, searchable: false},
         ],
         "responsive" : true,
@@ -81,7 +75,7 @@ $(function () {
         
         GS.inicioSolicitud();
         $.ajax({
-            url: "{{ route('docente.evaluacion.pdf') }}",
+            url: "{{ route('director.evaluacion.pdf') }}",
             type: 'POST',
             data: {
                 id: evaluacionId,

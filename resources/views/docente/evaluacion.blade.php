@@ -676,7 +676,7 @@
                     GS.finSolicitud();
                     if (response.status === 200) {
                         GS.modalCorrecto(response.message);
-                        var blob = GS.b64toBlob(response.data.pdf, 'application/pdf');
+                        var blob = GS.base64ToBlob(response.data.pdf, 'application/pdf');
                         var blobUrl = URL.createObjectURL(blob);
                         window.open(blobUrl);                        
                     } else {
