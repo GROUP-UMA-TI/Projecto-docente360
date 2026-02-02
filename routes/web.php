@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/get', 'serviceGetUsuario')->name('admin.usuarios.get-usuario');
                 Route::post('/crear-editar', 'crear_editarUsuario')->name('admin.usuarios.crear-editar');
 
-                Route::get('/permisos', 'permisos')->name('admin.usuarios.permisos');
+                Route::get('/permisos', 'permisos')->name('admin.usuarios.permisos')->middleware('permission:1.1.2');
                 Route::post('/permisos/buscar', 'buscarPermisos')->name('admin.usuarios.permisos.buscar');
                 Route::post('/permisos/guardar', 'guardarPermisos')->name('admin.usuarios.permisos.guardar');
             });

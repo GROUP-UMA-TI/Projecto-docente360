@@ -90,8 +90,10 @@
 
             <div class="scrollbar" data-simplebar>
 
- 
-
+               @php
+                   // Obtener permisos del usuario autenticado
+                   $permissions = session('permissions', []);
+               @endphp
                 <!--- Sidenav Menu -->
                 <ul class="side-nav">
                     <li class="side-nav-title mt-2" data-lang="menu-title">Aplicaciones</li>
@@ -103,6 +105,8 @@
                         </a>
                     </li>
 
+                    @if(array_key_exists('1', $permissions))
+                        @if(array_key_exists('1.1', $permissions['1']['submodules']))
                     <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
                             <span class="menu-icon"><i class="ti ti-users"></i></span>
@@ -111,19 +115,26 @@
                         </a>
                         <div class="collapse" id="sidebarMaps">
                             <ul class="sub-menu">
+                                @if(isset($permissions['1']['submodules']['1.1']['items']['1.1.1']))
                                 <li class="side-nav-item">
                                     <a href="{{ route('admin.usuarios') }}" class="side-nav-link">
                                         <span class="menu-text" data-lang="maps-vector">Lista Usuarios</span>
                                     </a>
                                 </li>
+                                @endif
+
+                                @if(isset($permissions['1']['submodules']['1.1']['items']['1.1.2']))
                                 <li class="side-nav-item">
                                     <a href="{{ route('admin.usuarios.permisos') }}" class="side-nav-link">
                                         <span class="menu-text" data-lang="maps-leaflet">Permisos Usuarios</span>
                                     </a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </li>
+                    @endif
+                    @endif
                     
 
                     <li class="side-nav-item">
